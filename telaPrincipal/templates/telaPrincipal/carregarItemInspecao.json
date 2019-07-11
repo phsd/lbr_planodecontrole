@@ -1,0 +1,14 @@
+[
+  {
+    "finalizado": "{{finalizado}}",
+    "compermissao": "{{compermissao}}",
+    "idItemInspecaoPC": "{{proximoItem.0.id}}",
+    "operacao": "{{proximoItem.0.operacao}}",
+    "numero": "{{proximoItem.0.numero}}",
+    "requisito": "{{proximoItem.0.requisito}}",
+    "metodoinstrucao": "{{proximoItem.0.metodoinstrucao}}",
+    "cor": "{{proximoItem.0.cor}}",
+    "ilustracao": "{{proximoItem.0.ilustracao}}",
+    "unidade": "{{proximoItem.0.unidade}}"
+  }
+]

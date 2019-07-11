@@ -1,0 +1,57 @@
+{% load static %}
+
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/themify-icons/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/css-progress-wizard-master/css/progress-wizard.min.css' %}">
+
+    <script src="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'vendors/popper.js/dist/umd/popper.min.js' %}"></script>
+    <script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendors/jquery-ui-1.12.1/jquery-ui.js' %}"></script>
+
+    <title>IP XX XXX 19</title>
+  </head>
+  <body style="background-color: black; overflow-x: hidden; overflow-y: hidden;">
+    <div class="form-group col-sm-6 mx-auto p-0 mb-0 mt-0 toggler" style="background-color: white; min-height: 100vh;">
+      <div style="background-color: #202020; color: #E6E6E6;" class="p-2 pt-3 pb-0 text-center">
+        <b>Plano de Controle:</b><br /> ROD02637-050D018-002-000<br />
+        <b>Identificação:</b> IP XX XXX 19, <b>Revisão:</b> 01
+      </div>
+      <div style="padding-top: 20vh;">
+        {% if form.errors %}
+          <p class="alert alert-danger" role="alert">Usuário e/ou senha incorretos</p>
+        {% endif %}
+
+        <form method="post">
+          {{ form.media }}
+          {% csrf_token %}
+          <div class="row">
+            <div class="form-group col-sm-5 text-right pt-1">
+              Usuário:
+            </div>
+            <div class="form-group col-sm-7">
+              {{ form.username }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-5 text-right pt-1">
+              Senha:
+            </div>
+            <div class="form-group col-sm-7">
+              {{ form.password }}
+            </div>
+          </div>
+          <div class="form-group col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{% if buscaMO %}
+[
+  {
+    "encontrado": "true",
+    "idHPC": "{{buscaMO.0.id}}",
+    "seriei": "{{buscaMO.0.seriei}}",
+    "serieii": "{{buscaMO.0.serieii}}",
+    "serieiii": "{{buscaMO.0.serieiii}}"
+  }
+]
+{% else %}
+[
+  {
+    "encontrado": "false",
+    "seriei": "-",
+    "serieii": "-",
+    "serieiii": "-"
+  }
+]
+{% endif %}

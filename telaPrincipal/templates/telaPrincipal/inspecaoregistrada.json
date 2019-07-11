@@ -1,0 +1,13 @@
+{% if inspecaoRegistrada %}
+[
+  {
+    "inspecaoSalvaSucesso": "{{inspecaoRegistrada}}"
+  }
+]
+{% else %}
+[
+  {
+    "inspecaoSalvaSucesso": "false"
+  }
+]
+{% endif %}
