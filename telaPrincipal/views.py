@@ -102,13 +102,12 @@ def PDF_IPXX_XXX_19(request):
     pdf_criado = HTML(string=html).write_pdf()
     dirname = os.path.dirname(__file__)
     if os.path.exists(dirname):
-        f = open(os.path.join(dirname, 'mypdf.pdf'), 'w')
-        f.write(pdf_criado)
-        response = FileResponse(open(dirname + '/mypdf.pdf', 'r'), content_type='application/pdf')
-        response['Content-Disposition'] = 'inline; filename={title}.pdf'.format(
-            title="titulo")
-        return response
-        pdf.closed
+        with open(os.path.join(dirname, 'static/pdfs/mypdf.pdf'), 'wb') as f:
+            f.write(pdf_criado)
+            response = FileResponse(open(dirname + '/static/pdfs/mypdf.pdf', 'rb'), content_type='application/pdf')
+            response['Content-Disposition'] = 'inline; filename={title}.pdf'.format(
+                title="titulo")
+            return response
 
 def PDF_IPXX_XXX_19_2(request):
     variavel = "aqui esta é a variavel"
