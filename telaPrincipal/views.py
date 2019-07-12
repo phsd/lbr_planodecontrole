@@ -90,27 +90,27 @@ def registrarInspecao(request):
     inspecaoRegistrada = 'true'
     return render(request, 'telaPrincipal/inspecaoregistrada.json', {'inspecaoRegistrada': inspecaoRegistrada})
 
-#def PDF_IPXX_XXX_19(request):
-#    variavel = "valor da variavel"
-#    response = HttpResponse(content_type="application/pdf")
-#    response['Content-Disposition'] = "inline; filename=mypdf.pdf".format()
-#    html = render_to_string("telaPrincipal/PDF_IPXX_XXX_19.html", {
-#        'variavel': variavel,
-#    })
-#
-#    font_config = FontConfiguration()
-#    pdf_criado = HTML(string=html).write_pdf()
-#    dirname = os.path.dirname(__file__)
-#    if os.path.exists(dirname):
-#        f = open(os.path.join(dirname, 'mypdf.pdf'), 'wb')
-#        f.write(pdf_criado)
-#        response = FileResponse(open(dirname + '/mypdf.pdf', 'rb'), content_type='application/pdf')
-#        response['Content-Disposition'] = 'inline; filename={title}.pdf'.format(
-#            title="titulo")
-#        return response
-#        pdf.closed
-
 def PDF_IPXX_XXX_19(request):
+    variavel = "valor da variavel"
+    response = HttpResponse(content_type="application/pdf")
+    response['Content-Disposition'] = "inline; filename=mypdf.pdf".format()
+    html = render_to_string("telaPrincipal/PDF_IPXX_XXX_19.html", {
+        'variavel': variavel,
+    })
+
+    font_config = FontConfiguration()
+    pdf_criado = HTML(string=html).write_pdf()
+    dirname = os.path.dirname(__file__)
+    if os.path.exists(dirname):
+        f = open(os.path.join(dirname, 'mypdf.pdf'), 'w')
+        f.write(pdf_criado)
+        response = FileResponse(open(dirname + '/mypdf.pdf', 'r'), content_type='application/pdf')
+        response['Content-Disposition'] = 'inline; filename={title}.pdf'.format(
+            title="titulo")
+        return response
+        pdf.closed
+
+def PDF_IPXX_XXX_19_2(request):
     variavel = "aqui esta é a variavel"
     response = HttpResponse(content_type="application/pdf")
     response['Content-Disposition'] = "inline; filename=donation-receipt.pdf"
