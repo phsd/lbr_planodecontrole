@@ -15,6 +15,8 @@
     <script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'vendors/jquery-ui-1.12.1/jquery-ui.js' %}"></script>
 
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+
     <title>IP XX XXX 19</title>
   </head>
   <body style="background-color: black; overflow-x: hidden; overflow-y: hidden;">
@@ -159,7 +161,6 @@
 
     <script type="text/javascript">
       jQuery(document).ready(function($) {
-          document.body.requestFullscreen();
           $("#buscarMO").click (function () {
             $("#buscarMO").attr("disabled", true);
             $("#passo1_proximo").addClass('disabled');

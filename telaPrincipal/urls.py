@@ -8,7 +8,7 @@ app_name = 'telaPrincipal'
 
 urlpatterns = [
     url(r'^$', view=views.index, name='index'),
-
+    url(r'^index/', view=views.index, name='index'),
     url('accounts/login/', auth_views.LoginView.as_view(), name='loginForm'),
     url('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
 
