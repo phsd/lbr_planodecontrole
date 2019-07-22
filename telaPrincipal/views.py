@@ -14,10 +14,11 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 from django.http import HttpResponse
-from django.template.loader import render_to_string
+from django.template.loader import render_to_string, get_template
 from django.utils.text import slugify
-from weasyprint import HTML
+from weasyprint import HTML, CSS
 from weasyprint.fonts import FontConfiguration
+from django.conf import settings
 import os
 
 from django.http import FileResponse, Http404
@@ -110,13 +111,13 @@ def PDF_IPXX_XXX_19(request):
             return response
 
 def PDF_IPXX_XXX_19_2(request):
-    variavel = "aqui esta é a variavel"
-    response = HttpResponse(content_type="application/pdf")
-    response['Content-Disposition'] = "inline; filename=donation-receipt.pdf"
-    html = render_to_string("telaPrincipal/PDF_IPXX_XXX_19.html", {
-        'variavel': variavel,
-    })
-
-    font_config = FontConfiguration()
-    HTML(string=html).write_pdf(response, font_config=font_config)
+    html_template = get_template('telaPrincipal/PDF_IPXX_XXX_19.html')
+    user = {
+        'name': "nome",
+        'address': "endereco"
+    }
+    rendered_html = html_template.render(user).encode(encoding="UTF-8")
+    pdf_file = HTML(string=rendered_html).write_pdf(stylesheets=[CSS(os.path.dirname(__file__) +  '/static/css/report.css')])
+    response = HttpResponse(pdf_file, content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="home_page.pdf"'
     return response

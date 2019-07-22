@@ -1,25 +1,604 @@
 <html>
- <head>
-   <title>Test</title>
-   <style>
-     h1 {
-       text-align: center;
-     }
+	<head>
+		<meta charset="utf-8">
+		<title>IP XX XXX 19</title>
+		<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900" rel="stylesheet" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet" />
+		<style>
+			@page {
+				background: white;
+				width: 21cm;
+				height: 29.7cm;
+				display: block;
+				margin: 0;
+				padding: 7mm;
+			}
+			.bordat {
+				border-top: 1px solid black;
+			}
+			.bordab {
+				border-bottom: 1px solid black;
+			}
+			.bordal {
+				border-left: 1px solid black;
+			}
+			.bordar {
+				border-right: 1px solid black;
+			}
+			.fonte1vh {
+				font-size: 1vh;
+				line-height: 1.1vh;
+				padding: 0.5px;
+			}
+			.fonte1_3vh {
+				font-size: 1.3vh;
+				line-height: 1.1vh;
+			}
+			.fonte1_5vh {
+				font-size: 1.5vh;
+				padding: 1px;
+			}
+			.fonte1_75vh {
+				font-size: 1.75vh;
+			}
 
-     table {
-       border: 1px solid;
-       margin: 0 auto;
-       width: 70%;
-     }
+			.grid-container1 {
+				width: 196mm;
+				display: grid;
+				grid-template-rows: 5mm 5mm 5mm;
+				grid-template-columns: 16mm 78mm 78mm 1fr;
 
-     td, th {
-       text-align: center;
-       border: 1px solid;
-     }
-   </style>
+				display: -ms-grid;
+				-ms-grid-rows: 6mm 6mm 6mm;
+				-ms-grid-columns: 16mm 78mm 78mm 1fr;
+
+				margin-bottom: 1vh;
+			}
+			.cell-A1 {
+				grid-column: 1;
+				grid-row: 1;
+				-ms-grid-row: 1;
+				-ms-grid-row-span: 3;
+				-ms-grid-column: 1;
+			}
+
+			.cell-B1 {
+				grid-row: 1;
+				grid-column: 2;
+				-ms-grid-row: 1;
+				-ms-grid-column: 2;
+				-ms-grid-column-span: 2;
+			}
+
+			.cell-C1 {
+				grid-row: 1;
+				grid-column: 3;
+				-ms-grid-row: 1;
+				-ms-grid-column: 4;
+			}
+
+			.cell-D1 {
+				grid-row: 2;
+				grid-column: 2;
+				-ms-grid-row: 2;
+				-ms-grid-column: 2;
+				-ms-grid-column-span: 2;
+			}
+			.cell-E1 {
+				grid-row: 2;
+				grid-column: 3;
+				-ms-grid-row: 2;
+				-ms-grid-column: 4;
+
+			}
+			.cell-F1 {
+				grid-row: 2;
+				grid-column: 3;
+				-ms-grid-row: 3;
+				-ms-grid-column: 2;
+
+			}
+			.cell-G1 {
+				grid-row: 2;
+				grid-column: 3;
+				-ms-grid-row: 3;
+				-ms-grid-column: 3;
+
+			}
+			.cell-H1 {
+				grid-row: 2;
+				grid-column: 3;
+				-ms-grid-row: 3;
+				-ms-grid-column: 4;
+			}
+
+			.grid-container2 {
+				width: 196mm;
+				display: grid;
+				grid-template-rows: 1mm 5mm 1mm 5mm 1mm 5mm;
+				grid-template-columns: 7mm 25mm 21mm 20mm 21mm 20mm 21mm 20mm 1fr;
+
+				display: -ms-grid;
+				-ms-grid-rows: 2mm 5mm 2mm 5mm 2mm 5mm;
+				-ms-grid-columns: 7mm 26mm 12mm 20mm 12.7mm 20mm 13.7mm 20mm 1fr;
+			}
+			.cell-SEP2A {
+				-ms-grid-row: 1;
+				-ms-grid-column: 1;
+				-ms-grid-column-span: 9;
+			}
+			.cell-A2 {
+				-ms-grid-row: 2;
+				-ms-grid-column: 1;
+				-ms-grid-column-span: 2;
+			}
+			.cell-C2 {
+				-ms-grid-row: 2;
+				-ms-grid-column: 3;
+				-ms-grid-column-span: 2;
+
+			}
+			.cell-E2 {
+				-ms-grid-row: 2;
+				-ms-grid-column: 5;
+				-ms-grid-column-span: 2;
+			}
+			.cell-G2 {
+				-ms-grid-row: 2;
+				-ms-grid-column: 7;
+				-ms-grid-column-span: 2;
+			}
+			.cell-I2 {
+				-ms-grid-row: 2;
+				-ms-grid-column: 9;
+
+			}
+			.cell-SEP2B {
+				-ms-grid-row: 3;
+				-ms-grid-column: 1;
+				-ms-grid-column-span: 9;
+			}
+			.cell-J2 {
+				-ms-grid-row: 4;
+				-ms-grid-column: 1;
+				-ms-grid-column-span: 3;
+
+			}
+			.cell-L2 {
+				-ms-grid-row: 4;
+				-ms-grid-column: 4;
+				-ms-grid-column-span: 6;
+			}
+			.cell-SEP2C {
+				-ms-grid-row: 5;
+				-ms-grid-column: 1;
+				-ms-grid-column-span: 9;
+			}
+			.cell-M2 {
+				-ms-grid-row: 6;
+				-ms-grid-column: 1;
+				-ms-grid-column-span: 4;
+			}
+			.cell-N2 {
+				-ms-grid-row: 6;
+				-ms-grid-column: 5;
+				-ms-grid-column-span: 2;
+			}
+			.cell-O2 {
+				-ms-grid-row: 6;
+				-ms-grid-column: 7;
+				-ms-grid-column-span: 2;
+			}
+			.cell-P2 {
+				-ms-grid-row: 6;
+				-ms-grid-column: 9;
+			}
+			.grid-container3 {
+				width: 196mm;
+				display: grid;
+				grid-template-rows: 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm;
+				grid-template-columns: 7mm 25mm 21mm 20mm 21mm 20mm 21mm 20mm 1fr;
+
+				display: -ms-grid;
+				-ms-grid-rows: 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm;
+				-ms-grid-columns: 20mm 14mm 20mm 14mm 1fr;
+				padding: 1.5mm;
+			}
+			.cell-A3 {
+				-ms-grid-row: 1;
+				-ms-grid-column: 1;
+			}
+			.cell-B3 {
+				-ms-grid-row: 1;
+				-ms-grid-column: 2;
+			}
+			.cell-C3 {
+				-ms-grid-row: 2;
+				-ms-grid-column: 1;
+			}
+			.cell-D3 {
+				-ms-grid-row: 2;
+				-ms-grid-column: 2;
+			}
+			.cell-E3 {
+				-ms-grid-row: 3;
+				-ms-grid-column: 1;
+			}
+			.cell-F3 {
+				-ms-grid-row: 3;
+				-ms-grid-column: 2;
+			}
+			.cell-G3 {
+				-ms-grid-row: 4;
+				-ms-grid-column: 1;
+			}
+			.cell-H3 {
+				-ms-grid-row: 4;
+				-ms-grid-column: 2;
+			}
+			.cell-I3 {
+				-ms-grid-row: 5;
+				-ms-grid-column: 1;
+			}
+			.cell-J3 {
+				-ms-grid-row: 5;
+				-ms-grid-column: 2;
+			}
+			.cell-K3 {
+				-ms-grid-row: 6;
+				-ms-grid-column: 1;
+			}
+			.cell-L3 {
+				-ms-grid-row: 6;
+				-ms-grid-column: 2;
+			}
+			.cell-M3 {
+				-ms-grid-row: 7;
+				-ms-grid-column: 1;
+			}
+			.cell-N3 {
+				-ms-grid-row: 7;
+				-ms-grid-column: 2;
+			}
+			.cell-O3 {
+				-ms-grid-row: 9;
+				-ms-grid-column: 1;
+				-ms-grid-column-span: 4;
+			}
+			.cell-P3 {
+				-ms-grid-row: 10;
+				-ms-grid-column: 1;
+			}
+			.cell-Q3 {
+				-ms-grid-row: 10;
+				-ms-grid-column: 2;
+			}
+			.cell-R3 {
+				-ms-grid-row: 10;
+				-ms-grid-column: 3;
+			}
+			.cell-S3 {
+				-ms-grid-row: 10;
+				-ms-grid-column: 4;
+			}
+			.cell-T3 {
+				-ms-grid-row: 11;
+				-ms-grid-column: 1;
+			}
+			.cell-U3 {
+				-ms-grid-row: 11;
+				-ms-grid-column: 2;
+			}
+			.cell-V3 {
+				-ms-grid-row: 11;
+				-ms-grid-column: 3;
+			}
+			.cell-X3 {
+				-ms-grid-row: 11;
+				-ms-grid-column: 4;
+			}
+			.cell-Y3 {
+				-ms-grid-row: 12;
+				-ms-grid-column: 1;
+			}
+			.cell-W3 {
+				-ms-grid-row: 12;
+				-ms-grid-column: 2;
+			}
+			.cell-Z3 {
+				-ms-grid-row: 12;
+				-ms-grid-column: 3;
+			}
+			.cell-AA3 {
+				-ms-grid-row: 12;
+				-ms-grid-column: 4;
+			}
+			.cell-AB3 {
+				-ms-grid-row: 13;
+				-ms-grid-column: 1;
+			}
+			.cell-AC3 {
+				-ms-grid-row: 13;
+				-ms-grid-column: 2;
+			}
+			.cell-AD3 {
+				-ms-grid-row: 13;
+				-ms-grid-column: 3;
+			}
+			.cell-AE3 {
+				-ms-grid-row: 13;
+				-ms-grid-column: 4;
+			}
+			.cell-AF3 {
+				-ms-grid-row: 14;
+				-ms-grid-column: 3;
+			}
+			.cell-AG3 {
+				-ms-grid-row: 15;
+				-ms-grid-column: 1;
+			}
+			.cell-AH3 {
+				-ms-grid-row: 15;
+				-ms-grid-column: 2;
+			}
+			.cell-AI3 {
+				-ms-grid-row: 15;
+				-ms-grid-column: 3;
+			}
+			.cell-AJ3 {
+				-ms-grid-row: 1;
+				-ms-grid-column: 5;
+				-ms-grid-row-span: 15;
+				border: 1px solid blue;
+			}
+			.grid-container4 {
+				width: 196mm;
+				display: grid;
+				grid-template-rows: 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm;
+				grid-template-columns: 7mm 25mm 21mm 20mm 21mm 20mm 21mm 20mm 1fr;
+
+				display: -ms-grid;
+				-ms-grid-rows: 8mm 13mm 13mm 13mm 13mm;
+				-ms-grid-columns: 16mm 13mm 105mm 26mm 1fr 1fr 1fr;
+				padding: 1.5mm;
+			}
+			.cell-A4 {
+				-ms-grid-row: 1;
+				-ms-grid-column: 1;
+			}
+			.cell-B4 {
+				-ms-grid-row: 1;
+				-ms-grid-column: 2;
+			}
+			.cell-C4 {
+				-ms-grid-row: 1;
+				-ms-grid-column: 3;
+			}
+			.cell-D4 {
+				-ms-grid-row: 1;
+				-ms-grid-column: 4;
+			}
+			.cell-E4 {
+				-ms-grid-row: 1;
+				-ms-grid-column: 5;
+			}
+			.cell-F4 {
+				-ms-grid-row: 1;
+				-ms-grid-column: 6;
+			}
+			.cell-G4 {
+				-ms-grid-row: 1;
+				-ms-grid-column: 7;
+			}
+			.footer {
+				position: absolute;
+				background-color: red;
+				width: 100px;
+				height: 100px;
+			}
+		</style>
  </head>
  <body>
-   <h1>List of people</h1>
-   dadasaadfas{{variavel}}
+		<div class="grid-container1 bordab bordat bordal bordar">
+			<div class="cell-A1 bordar text-center">
+				logo
+			</div>
+			<div class="cell-B1 bordar fonte1vh">
+				<span class="font-weight-bold">Documento (Document)</span>
+			</div>
+			<div class="cell-C1 fonte1vh">
+				<span class="font-weight-bold">IDENTIFICAÇÃO</span><br />
+				IP XX XXX 19
+			</div>
+
+			<div class="cell-D1 bordar fonte1_75vh text-center">
+				PLANO DE CONTROLE: ROD02637-050D018-002-000
+			</div>
+			<div class="cell-E1 bordat fonte1vh">
+				<span class="font-weight-bold">Nº REVISÃO</span><br />
+				00
+			</div>
+			<div class="cell-F1 bordar bordat fonte1vh text-center">
+				<span class="font-weight-bold">DATA EMISSÃO</span><br />
+				16/05/2019
+			</div>
+			<div class="cell-G1 bordar bordat fonte1vh text-center">
+				<span class="font-weight-bold">DATA REVISÃO</span><br />
+				16/05/2019
+			</div>
+			<div class="cell-H1 bordat fonte1vh text-center">
+				logo liebherr
+			</div>
+		</div>
+		<div class="grid-container2 bordat bordal bordar">
+			<div class="SEP2A">
+			</div>
+			<div class="cell-A2 bordar fonte1_5vh bordab">
+				<span class="font-weight-bold">MO:</span>
+				A001234
+			</div>
+			<div class="cell-C2 bordar fonte1_5vh bordab">
+				<span class="font-weight-bold">Série I:</span>
+				35
+			</div>
+			<div class="cell-E2 bordar fonte1_5vh bordab">
+				<span class="font-weight-bold">Série II:</span>
+				36
+			</div>
+			<div class="cell-G2 bordar fonte1_5vh bordab">
+				<span class="font-weight-bold">Série III:</span>
+				37
+			</div>
+			<div class="cell-I2 bordab"></div>
+			<div class="cell-SEP2B">
+			</div>
+			<div class="cell-J2 bordar fonte1_5vh bordab">
+				<span class="font-weight-bold">Quantidade de peças:</span>
+				1
+			</div>
+			<div class="cell-L2 fonte1_5vh bordab">
+			</div>
+			<div class="cell-SEP2C">
+			</div>
+			<div class="cell-M2 fonte1_5vh bordab">
+				<span class="font-weight-bold">Controlado por:</span> 5170 - Paulo Henrique
+			</div>
+			<div class="cell-N2 fonte1_5vh bordab">
+				<span class="font-weight-bold">RG:</span>
+			</div>
+			<div class="cell-O2 fonte1_5vh bordab">
+				<span class="font-weight-bold">Data:</span>
+			</div>
+			<div class="cell-P2 fonte1_5vh bordab">
+			</div>
+		</div>
+		<div class="grid-container3 bordab bordal bordar">
+			<div class="cell-A3 bordab">
+
+			</div>
+			<div class="cell-B3 fonte1_3vh font-weight-bold bordal bordab text-center">
+				Aplicável
+			</div>
+			<div class="cell-C3 fonte1_3vh font-weight-bold text-center">
+				Jateamento
+			</div>
+			<div class="cell-D3 fonte1_3vh bordal text-center">
+				X
+			</div>
+			<div class="cell-E3 fonte1_3vh font-weight-bold text-center">
+				Zinco
+			</div>
+			<div class="cell-F3 fonte1_3vh bordal text-center">
+				X
+			</div>
+			<div class="cell-G3 fonte1_3vh font-weight-bold text-center">
+				Primer
+			</div>
+			<div class="cell-H3 fonte1_3vh bordal text-center">
+
+			</div>
+			<div class="cell-I3 fonte1_3vh font-weight-bold text-center">
+				Pintura
+			</div>
+			<div class="cell-J3 fonte1_3vh bordal text-center">
+
+			</div>
+			<div class="cell-K3 fonte1_3vh font-weight-bold text-center">
+				Deltatone
+			</div>
+			<div class="cell-L3 fonte1_3vh bordal text-center">
+
+			</div>
+			<div class="cell-M3 fonte1_3vh font-weight-bold text-center">
+				Anticorrosivo
+			</div>
+			<div class="cell-N3 fonte1_3vh bordal text-center">
+				X
+			</div>
+			<div class="cell-O3 fonte1_3vh font-weight-bold bordab text-center">
+				* Nota: Rolamentos Pintados
+			</div>
+			<div class="cell-P3 fonte1_3vh font-weight-bold text-center">
+				Códigos
+			</div>
+			<div class="cell-Q3 fonte1_3vh font-weight-bold bordal text-center">
+				Primer
+			</div>
+			<div class="cell-R3 fonte1_3vh font-weight-bold bordal text-center">
+				Acabamento
+			</div>
+			<div class="cell-S3 fonte1_3vh font-weight-bold bordal text-center">
+				Validade
+			</div>
+			<div class="cell-T3 fonte1_3vh font-weight-bold text-center">
+				Comp. A
+			</div>
+			<div class="cell-U3 fonte1_3vh bordal text-center">
+
+			</div>
+			<div class="cell-V3 fonte1_3vh bordal text-center">
+
+			</div>
+			<div class="cell-X3 fonte1_3vh bordal text-center">
+				__/__/__
+			</div>
+			<div class="cell-Y3 fonte1_3vh font-weight-bold text-center">
+				Comp. B
+			</div>
+			<div class="cell-W3 fonte1_3vh bordal text-center">
+
+			</div>
+			<div class="cell-Z3 fonte1_3vh bordal text-center">
+
+			</div>
+			<div class="cell-AA3 fonte1_3vh bordal text-center">
+				__/__/__
+			</div>
+			<div class="cell-AB3 fonte1_3vh font-weight-bold text-center">
+				Solvente
+			</div>
+			<div class="cell-AC3 fonte1_3vh bordal text-center">
+
+			</div>
+			<div class="cell-AD3 fonte1_3vh bordal text-center">
+
+			</div>
+			<div class="cell-AE3 fonte1_3vh bordal text-center">
+				__/__/__
+			</div>
+			<div class="cell-AF3 fonte1_3vh font-weight-bold text-center">
+				Validade
+			</div>
+			<div class="cell-AG3 fonte1_3vh font-weight-bold text-center">
+				Base d'água
+			</div>
+			<div class="cell-AH3 fonte1_3vh font-weight-bold bordal text-center">
+
+			</div>
+			<div class="cell-AI3 fonte1_3vh bordal text-center">
+				__/__/__
+			</div>
+			<div class="cell-AJ3 fonte1_3vh bordal text-center">
+				imagem rolamento
+			</div>
+		</div>
+		<div class="grid-container4 bordab bordal bordar">
+			<div class="cell-A4 fonte1_5vh text-center">
+				OPERAÇÃO
+			</div>
+			<div class="cell-B4 fonte1_5vh bordal text-center">
+				ITEM
+			</div>
+			<div class="cell-C4 fonte1_5vh bordal text-center">
+				REQUISITO
+			</div>
+			<div class="cell-D4 fonte1_5vh bordal text-center">
+				MÉTODO/INSTRUÇÃO
+			</div>
+		</div>
+		<div class="footer">
+			Este documento é classificado como SOMENTE USO INTERNO.<br />
+			Não é permitido a distribuição. Os critérios de acesso, utilização, armazenamento e descarte estão descritos na NC DIR 001.
+		</div>
  </body>
 </html>

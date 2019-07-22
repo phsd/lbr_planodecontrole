@@ -159,7 +159,7 @@
 
     <script type="text/javascript">
       jQuery(document).ready(function($) {
-
+          document.documentElement.requestFullscreen();
           $("#buscarMO").click (function () {
             $("#buscarMO").attr("disabled", true);
             $("#passo1_proximo").addClass('disabled');
@@ -278,6 +278,8 @@
 
           $("#passo2_anterior").click(function () {
             $("#hiddenidItemInspecaoPC").val("");
+
+            $("#divDescricao").css("background-color", "#FFFFFF");
 
             $("#passo1").effect("slide", {direction: "left"}, 200);
             $("#passo2").effect("drop", {direction: "right"}, 200);
