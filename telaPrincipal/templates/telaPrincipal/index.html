@@ -32,7 +32,7 @@
          <div style="background-color: #202020; color: #202020;" class="p-2 pt-3 pb-0 text-center">
            <br /><br /><br />
          </div>
-         <div style="padding-top: 74vh;">
+         <div style="padding-top: 70vh;">
            <div>
              <ul class="progress-indicator">
                <li class="completed"> <span class="bubble"></span>Passo 1</li>
@@ -43,7 +43,7 @@
          </div>
        </div>
        <div id="passo1" style="position: absolute; top: 0; width: 100%;" class="ui-widget-content ui-corner-all">
-         <div style="min-height: 93vh; border-bottom: 1px solid white;">
+         <div style="min-height: 91vh; border-bottom: 1px solid white;">
           <div style="background-color: #202020; color: #E6E6E6;" class="p-2 pt-3 pb-0 text-center">
           	<b>Plano de Controle:</b><br /> ROD02637-050D018-002-000<br />
           	<b>Identificação:</b> IP XX XXX 19, <b>Revisão:</b> 01
@@ -87,7 +87,7 @@
          </div>
        </div>
        <div id="passo2" style="display:none; position: absolute; top: 0; width: 100%;">
-        <div style="min-height: 93vh; border-bottom: 1px solid white;">
+        <div style="min-height: 91vh; border-bottom: 1px solid white;">
           <div style="background-color: #202020; color: #E6E6E6;" class="p-2 pt-3 pb-0 text-center">
           	<b>MO:</b> <span id="moHeader"></span><br />
           	<span id="serieHeader"></span><br />
@@ -126,7 +126,7 @@
          </div>
        </div>
        <div id="passo3" style="display:none; position: absolute; top: 0; width: 100%;" class="ui-widget-content ui-corner-all">
-          <div style="min-height: 93vh; border-bottom: 1px solid white;">
+          <div style="min-height: 91vh; border-bottom: 1px solid white;">
             <div style="background-color: #202020; color: #E6E6E6;" class="p-2 pt-3 pb-0 text-center">
               <b>Plano de Controle:</b><br /> ROD02637-050D018-002-000<br />
               <b>Identificação:</b> IP XX XXX 19, <b>Revisão:</b> 01
@@ -248,6 +248,7 @@
                     $("#requisito").text(value2.requisito);
                     $("#metodoinstrucao").text(value2.metodoinstrucao);
                     $("#divDescricao").css("background-color", value2.cor);
+                    $("#divDescricao").css("color", "#FFFFFF");
                     $("#unidade").text(value2.unidade);
                     if (value2.unidade == "OK/NOK") {
                       $("#divresultado").html('<select class="form-control" id="valorresultado"><option value="">-----</option><option value="OK">OK</option><option value="NOK">NOK</option></select>');
@@ -275,6 +276,7 @@
             $("#hiddenidItemInspecaoPC").val("");
 
             $("#divDescricao").css("background-color", "#202020");
+            $("#divDescricao").css("color", "#202020");
             $("#divresultado").html("");
             $("#unidade").text("");
             $("#passo1").effect("slide", {direction: "left"}, 200);
