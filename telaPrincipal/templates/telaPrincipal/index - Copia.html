@@ -32,18 +32,9 @@
          <div style="background-color: #202020; color: #202020;" class="p-2 pt-3 pb-0 text-center">
            <br /><br /><br />
          </div>
-         <div style="padding-top: 74vh;">
-           <div>
-             <ul class="progress-indicator">
-               <li class="completed"> <span class="bubble"></span>Passo 1</li>
-               <li id="liPasso2"> <span class="bubble"></span>Passo 2</li>
-               <li id="liPasso3"> <span class="bubble"></span>Passo 3</li>
-             </ul>
-           </div>
-         </div>
        </div>
        <div id="passo1" style="position: absolute; top: 0; width: 100%;" class="ui-widget-content ui-corner-all">
-         <div style="min-height: 93vh; border-bottom: 1px solid white;">
+         <div style="min-height: 84vh; border-bottom: 1px solid white;">
           <div style="background-color: #202020; color: #E6E6E6;" class="p-2 pt-3 pb-0 text-center">
           	<b>Plano de Controle:</b><br /> ROD02637-050D018-002-000<br />
           	<b>Identificação:</b> IP XX XXX 19, <b>Revisão:</b> 01
@@ -81,13 +72,20 @@
                MO não encontrada
           </div>
          </div>
+         <div>
+           <ul class="progress-indicator">
+             <li class="completed"> <span class="bubble"></span>Passo 1</li>
+             <li> <span class="bubble"></span>Passo 2</li>
+             <li> <span class="bubble"></span>Passo 3</li>
+           </ul>
+         </div>
          <div class="btn-group col-sm-12">
            <a href="#" class="btn btn-dark col-sm-6" id="passo1_logoff">Logoff</a>
            <a href="#" class="btn btn-primary col-sm-6 disabled" id="passo1_proximo">Próximo</a>
          </div>
        </div>
        <div id="passo2" style="display:none; position: absolute; top: 0; width: 100%;">
-        <div style="min-height: 93vh; border-bottom: 1px solid white;">
+        <div style="min-height: 84vh; border-bottom: 1px solid white;">
           <div style="background-color: #202020; color: #E6E6E6;" class="p-2 pt-3 pb-0 text-center">
           	<b>MO:</b> <span id="moHeader"></span><br />
           	<span id="serieHeader"></span><br />
@@ -120,13 +118,20 @@
   		      </div>
           </div>
          </div>
+         <div>
+           <ul class="progress-indicator">
+             <li class="completed"> <span class="bubble"></span>Passo 1</li>
+             <li class="completed"> <span class="bubble"></span>Passo 2</li>
+             <li> <span class="bubble"></span>Passo 3</li>
+           </ul>
+         </div>
          <div class="btn-group col-sm-12">
           <a href="#" class="btn btn-secondary col-sm-6" id="passo2_anterior">Anterior</a>
           <a href="#" class="btn btn-success col-sm-6 disabled" id="passo2_proximo">Registrar</a>
          </div>
        </div>
        <div id="passo3" style="display:none; position: absolute; top: 0; width: 100%;" class="ui-widget-content ui-corner-all">
-          <div style="min-height: 93vh; border-bottom: 1px solid white;">
+          <div style="min-height: 84vh; border-bottom: 1px solid white;">
             <div style="background-color: #202020; color: #E6E6E6;" class="p-2 pt-3 pb-0 text-center">
               <b>Plano de Controle:</b><br /> ROD02637-050D018-002-000<br />
               <b>Identificação:</b> IP XX XXX 19, <b>Revisão:</b> 01
@@ -142,6 +147,13 @@
                    Erro ao registrar inspeção, favor contactar inspetor de qualidade
               </div>
             </div>
+          </div>
+          <div>
+            <ul class="progress-indicator">
+              <li class="completed"> <span class="bubble"></span>Passo 1</li>
+              <li class="completed"> <span class="bubble"></span>Passo 2</li>
+              <li class="completed"> <span class="bubble"></span>Passo 3</li>
+            </ul>
           </div>
           <div class="btn-group col-sm-12">
             <a href="#" class="btn btn-primary col-sm-6" id="passo3_inicio">Novo Registro</a>
@@ -212,7 +224,6 @@
           });
 
       		$("#passo1_proximo").click(function () {
-            $("#liPasso2").addClass('completed');
             $("#moHeader").text($('#txbMO').val());
             $("#serieHeader").html($("#labelserie" + $('input[name="serie"]:checked').val()).html());
             $("#passo2_proximo").addClass('disabled');
@@ -271,7 +282,6 @@
           });
 
           $("#passo2_anterior").click(function () {
-            $("#liPasso2").removeClass('completed');
             $("#hiddenidItemInspecaoPC").val("");
 
             $("#divDescricao").css("background-color", "#202020");
@@ -291,7 +301,7 @@
           });
 
           $("#passo2_proximo").click(function () {
-            $("#liPasso3").addClass('completed');
+
             var url = $("#formInspecao").attr("dataRegistrarInspecao");
             var SerieSv = $('input[name="serie"]:checked').val();
             var valorSv = $("#valorresultado").val();
