@@ -105,6 +105,7 @@ def PDF_IPXX_XXX_19(request):
     if os.path.exists(dirname):
         with open(os.path.join(dirname, 'media/pdfs/mypdf2.pdf'), 'wb') as f:
             f.write(pdf_criado)
+            print(dirname + '/media/pdfs/mypdf2.pdf')
             response = FileResponse(open(dirname + '/media/pdfs/mypdf2.pdf', 'rb'), content_type='application/pdf')
             response['Content-Disposition'] = 'inline; filename={title}.pdf'.format(
                 title="titulo")
