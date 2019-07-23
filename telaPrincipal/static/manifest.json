@@ -9,6 +9,6 @@
     }
   ],
   "start_url": "/index/",
-  "display": "minimal-ui",
+  "display": "fullscreen",
   "orientation": "portrait"
 }
