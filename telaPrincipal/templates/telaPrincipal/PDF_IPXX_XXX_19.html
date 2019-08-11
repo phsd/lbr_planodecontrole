@@ -1,604 +1,862 @@
+{% load static %}
+
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>IP XX XXX 19</title>
-		<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900" rel="stylesheet" />
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet" />
 		<style>
-			@page {
-				background: white;
+			body {
 				width: 21cm;
 				height: 29.7cm;
 				display: block;
 				margin: 0;
-				padding: 7mm;
+				font: arial;
+			}
+			@page {
+		  	size: A4;
+			  margin: 0;
+			}
+			@media print {
+				html, body {
+					margin: 0;
+					width: 21cm;
+					height: 29.7cm;
+				}
 			}
 			.bordat {
-				border-top: 1px solid black;
+				border-top: 0.2mm solid black;
 			}
 			.bordab {
-				border-bottom: 1px solid black;
+				border-bottom: 0.2mm solid black;
 			}
 			.bordal {
-				border-left: 1px solid black;
+				border-left: 0.2mm solid black;
 			}
 			.bordar {
-				border-right: 1px solid black;
+				border-right: 0.2mm solid black;
 			}
-			.fonte1vh {
-				font-size: 1vh;
-				line-height: 1.1vh;
-				padding: 0.5px;
+			.fonte3mm {
+				font-size: 3mm;
+				line-height: 3mm;
 			}
-			.fonte1_3vh {
-				font-size: 1.3vh;
-				line-height: 1.1vh;
+			.fonte3_3mm {
+				font-size: 3.3mm;
+				line-height: 3mm;
 			}
-			.fonte1_5vh {
-				font-size: 1.5vh;
+			.fonte3_5mm {
+				font-size: 3.5mm;
 				padding: 1px;
 			}
-			.fonte1_75vh {
-				font-size: 1.75vh;
+			.fonte4_5mm {
+				font-size: 4.5mm;
 			}
 
-			.grid-container1 {
-				width: 196mm;
-				display: grid;
-				grid-template-rows: 5mm 5mm 5mm;
-				grid-template-columns: 16mm 78mm 78mm 1fr;
 
-				display: -ms-grid;
-				-ms-grid-rows: 6mm 6mm 6mm;
-				-ms-grid-columns: 16mm 78mm 78mm 1fr;
-
-				margin-bottom: 1vh;
-			}
-			.cell-A1 {
-				grid-column: 1;
-				grid-row: 1;
-				-ms-grid-row: 1;
-				-ms-grid-row-span: 3;
-				-ms-grid-column: 1;
+			#container1 {
+				position: absolute;
+				left: 7mm;
+				top: 7mm;
+				width: 197mm;
+				height: 30mm;
 			}
 
-			.cell-B1 {
-				grid-row: 1;
-				grid-column: 2;
-				-ms-grid-row: 1;
-				-ms-grid-column: 2;
-				-ms-grid-column-span: 2;
-			}
-
-			.cell-C1 {
-				grid-row: 1;
-				grid-column: 3;
-				-ms-grid-row: 1;
-				-ms-grid-column: 4;
-			}
-
-			.cell-D1 {
-				grid-row: 2;
-				grid-column: 2;
-				-ms-grid-row: 2;
-				-ms-grid-column: 2;
-				-ms-grid-column-span: 2;
-			}
-			.cell-E1 {
-				grid-row: 2;
-				grid-column: 3;
-				-ms-grid-row: 2;
-				-ms-grid-column: 4;
-
-			}
-			.cell-F1 {
-				grid-row: 2;
-				grid-column: 3;
-				-ms-grid-row: 3;
-				-ms-grid-column: 2;
-
-			}
-			.cell-G1 {
-				grid-row: 2;
-				grid-column: 3;
-				-ms-grid-row: 3;
-				-ms-grid-column: 3;
-
-			}
-			.cell-H1 {
-				grid-row: 2;
-				grid-column: 3;
-				-ms-grid-row: 3;
-				-ms-grid-column: 4;
-			}
-
-			.grid-container2 {
-				width: 196mm;
-				display: grid;
-				grid-template-rows: 1mm 5mm 1mm 5mm 1mm 5mm;
-				grid-template-columns: 7mm 25mm 21mm 20mm 21mm 20mm 21mm 20mm 1fr;
-
-				display: -ms-grid;
-				-ms-grid-rows: 2mm 5mm 2mm 5mm 2mm 5mm;
-				-ms-grid-columns: 7mm 26mm 12mm 20mm 12.7mm 20mm 13.7mm 20mm 1fr;
-			}
-			.cell-SEP2A {
-				-ms-grid-row: 1;
-				-ms-grid-column: 1;
-				-ms-grid-column-span: 9;
-			}
-			.cell-A2 {
-				-ms-grid-row: 2;
-				-ms-grid-column: 1;
-				-ms-grid-column-span: 2;
-			}
-			.cell-C2 {
-				-ms-grid-row: 2;
-				-ms-grid-column: 3;
-				-ms-grid-column-span: 2;
-
-			}
-			.cell-E2 {
-				-ms-grid-row: 2;
-				-ms-grid-column: 5;
-				-ms-grid-column-span: 2;
-			}
-			.cell-G2 {
-				-ms-grid-row: 2;
-				-ms-grid-column: 7;
-				-ms-grid-column-span: 2;
-			}
-			.cell-I2 {
-				-ms-grid-row: 2;
-				-ms-grid-column: 9;
-
-			}
-			.cell-SEP2B {
-				-ms-grid-row: 3;
-				-ms-grid-column: 1;
-				-ms-grid-column-span: 9;
-			}
-			.cell-J2 {
-				-ms-grid-row: 4;
-				-ms-grid-column: 1;
-				-ms-grid-column-span: 3;
-
-			}
-			.cell-L2 {
-				-ms-grid-row: 4;
-				-ms-grid-column: 4;
-				-ms-grid-column-span: 6;
-			}
-			.cell-SEP2C {
-				-ms-grid-row: 5;
-				-ms-grid-column: 1;
-				-ms-grid-column-span: 9;
-			}
-			.cell-M2 {
-				-ms-grid-row: 6;
-				-ms-grid-column: 1;
-				-ms-grid-column-span: 4;
-			}
-			.cell-N2 {
-				-ms-grid-row: 6;
-				-ms-grid-column: 5;
-				-ms-grid-column-span: 2;
-			}
-			.cell-O2 {
-				-ms-grid-row: 6;
-				-ms-grid-column: 7;
-				-ms-grid-column-span: 2;
-			}
-			.cell-P2 {
-				-ms-grid-row: 6;
-				-ms-grid-column: 9;
-			}
-			.grid-container3 {
-				width: 196mm;
-				display: grid;
-				grid-template-rows: 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm;
-				grid-template-columns: 7mm 25mm 21mm 20mm 21mm 20mm 21mm 20mm 1fr;
-
-				display: -ms-grid;
-				-ms-grid-rows: 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm;
-				-ms-grid-columns: 20mm 14mm 20mm 14mm 1fr;
+			#divLogo {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 23mm;
+				height: 29.5mm;
 				padding: 1.5mm;
+				background-image: url("{% static 'images/logoCQ.jpg' %}");
+				background-position: center;
+  			background-repeat: no-repeat;
 			}
-			.cell-A3 {
-				-ms-grid-row: 1;
-				-ms-grid-column: 1;
+			#divDocumento {
+				position: absolute;
+				left: 23mm;
+				top: 0;
+				width: 141mm;
+				height: 10mm;
+				padding: 1mm;
 			}
-			.cell-B3 {
-				-ms-grid-row: 1;
-				-ms-grid-column: 2;
+			#divDocumentoNome {
+				position: absolute;
+				left: 23mm;
+				top: 10mm;
+				width: 141mm;
+				height: 10mm;
+				padding: 1mm;
 			}
-			.cell-C3 {
-				-ms-grid-row: 2;
-				-ms-grid-column: 1;
+
+			#divIdentificacao {
+				position: absolute;
+				left: 164mm;
+				top: 0;
+				width: 32.5mm;
+				height: 10mm;
+				padding: 1mm;
 			}
-			.cell-D3 {
-				-ms-grid-row: 2;
-				-ms-grid-column: 2;
+			#divNumRevisao {
+				position: absolute;
+				left: 164mm;
+				top: 10mm;
+				width: 32.5mm;
+				height: 10mm;
+				padding: 1mm;
 			}
-			.cell-E3 {
-				-ms-grid-row: 3;
-				-ms-grid-column: 1;
+			#divDataEmissao {
+				position: absolute;
+				left: 23mm;
+				top: 20mm;
+				width: 70mm;
+				height: 9.5mm;
+				padding: 1mm;
 			}
-			.cell-F3 {
-				-ms-grid-row: 3;
-				-ms-grid-column: 2;
+			#divDataRevisao {
+				position: absolute;
+				left: 93mm;
+				top: 20mm;
+				width: 71mm;
+				height: 9.5mm;
+				padding: 1mm;
 			}
-			.cell-G3 {
-				-ms-grid-row: 4;
-				-ms-grid-column: 1;
+			#divLogoLiebherr {
+				position: absolute;
+				left: 164mm;
+				top: 20mm;
+				width: 32.5mm;
+				height: 10mm;
+				padding: 1mm;
+				background-image: url("{% static 'images/logoLiebherr.jpg' %}");
+				background-position: center;
+  			background-repeat: no-repeat;
 			}
-			.cell-H3 {
-				-ms-grid-row: 4;
-				-ms-grid-column: 2;
+
+			#container2 {
+				position: absolute;
+				left: 7mm;
+				top: 39mm;
+				width: 197mm;
+				height: 18mm;
 			}
-			.cell-I3 {
-				-ms-grid-row: 5;
-				-ms-grid-column: 1;
+			#divMO {
+				position: absolute;
+				left: 0;
+				top: 1.5mm;
+				width: 30mm;
+				height: 4.5mm;
 			}
-			.cell-J3 {
-				-ms-grid-row: 5;
-				-ms-grid-column: 2;
+			#divSerieI {
+				position: absolute;
+				left: 30mm;
+				top: 1.5mm;
+				width: 30mm;
+				height: 4.5mm;
 			}
-			.cell-K3 {
-				-ms-grid-row: 6;
-				-ms-grid-column: 1;
+			#divSerieII {
+				position: absolute;
+				left: 60mm;
+				top: 1.5mm;
+				width: 30mm;
+				height: 4.5mm;
 			}
-			.cell-L3 {
-				-ms-grid-row: 6;
-				-ms-grid-column: 2;
+			#divSerieIII {
+				position: absolute;
+				left: 90mm;
+				top: 1.5mm;
+				width: 30mm;
+				height: 4.5mm;
 			}
-			.cell-M3 {
-				-ms-grid-row: 7;
-				-ms-grid-column: 1;
+			#divQtdePecas {
+				position: absolute;
+				left: 0;
+				top: 7.5mm;
+				width: 45mm;
+				height: 4.5mm;
 			}
-			.cell-N3 {
-				-ms-grid-row: 7;
-				-ms-grid-column: 2;
+			#divControladoPor {
+				position: absolute;
+				left: 0;
+				top: 13mm;
+				width: 65mm;
+				height: 4.5mm;
 			}
-			.cell-O3 {
-				-ms-grid-row: 9;
-				-ms-grid-column: 1;
-				-ms-grid-column-span: 4;
+			#divControladoPorRG {
+				position: absolute;
+				left: 65mm;
+				top: 13mm;
+				width: 25mm;
+				height: 4.5mm;
 			}
-			.cell-P3 {
-				-ms-grid-row: 10;
-				-ms-grid-column: 1;
+			#divControladoPorData {
+				position: absolute;
+				left: 90mm;
+				top: 13mm;
+				width: 30mm;
+				height: 4.5mm;
 			}
-			.cell-Q3 {
-				-ms-grid-row: 10;
-				-ms-grid-column: 2;
+			#container3 {
+				position: absolute;
+				left: 7mm;
+				top: 57mm;
+				width: 197mm;
+				height: 70mm;
 			}
-			.cell-R3 {
-				-ms-grid-row: 10;
-				-ms-grid-column: 3;
+			#divAplicavelLabel {
+				position: absolute;
+				left: 22mm;
+				top: 12mm;
+				width: 16mm;
+				height: 3mm;
 			}
-			.cell-S3 {
-				-ms-grid-row: 10;
-				-ms-grid-column: 4;
+			#divJateamentoLabel {
+				position: absolute;
+				left: 0mm;
+				top: 15mm;
+				width: 22mm;
+				height: 3mm;
 			}
-			.cell-T3 {
-				-ms-grid-row: 11;
-				-ms-grid-column: 1;
+			#divJateamentoX {
+				position: absolute;
+				left: 22mm;
+				top: 15mm;
+				width: 16mm;
+				height: 3mm;
 			}
-			.cell-U3 {
-				-ms-grid-row: 11;
-				-ms-grid-column: 2;
+			#divZincoLabel {
+				position: absolute;
+				left: 0mm;
+				top: 18mm;
+				width: 22mm;
+				height: 3mm;
 			}
-			.cell-V3 {
-				-ms-grid-row: 11;
-				-ms-grid-column: 3;
+			#divZincoX {
+				position: absolute;
+				left: 22mm;
+				top: 18mm;
+				width: 16mm;
+				height: 3mm;
 			}
-			.cell-X3 {
-				-ms-grid-row: 11;
-				-ms-grid-column: 4;
+			#divPrimerLabel {
+				position: absolute;
+				left: 0mm;
+				top: 21mm;
+				width: 22mm;
+				height: 3mm;
 			}
-			.cell-Y3 {
-				-ms-grid-row: 12;
-				-ms-grid-column: 1;
+			#divPrimerX {
+				position: absolute;
+				left: 22mm;
+				top: 21mm;
+				width: 16mm;
+				height: 3mm;
 			}
-			.cell-W3 {
-				-ms-grid-row: 12;
-				-ms-grid-column: 2;
+			#divPinturaLabel {
+				position: absolute;
+				left: 0mm;
+				top: 24mm;
+				width: 22mm;
+				height: 3mm;
 			}
-			.cell-Z3 {
-				-ms-grid-row: 12;
-				-ms-grid-column: 3;
+			#divPinturaX {
+				position: absolute;
+				left: 22mm;
+				top: 24mm;
+				width: 16mm;
+				height: 3mm;
 			}
-			.cell-AA3 {
-				-ms-grid-row: 12;
-				-ms-grid-column: 4;
+			#divDeltatoneLabel {
+				position: absolute;
+				left: 0mm;
+				top: 27mm;
+				width: 22mm;
+				height: 3mm;
 			}
-			.cell-AB3 {
-				-ms-grid-row: 13;
-				-ms-grid-column: 1;
+			#divDeltatoneX {
+				position: absolute;
+				left: 22mm;
+				top: 27mm;
+				width: 16mm;
+				height: 3mm;
 			}
-			.cell-AC3 {
-				-ms-grid-row: 13;
-				-ms-grid-column: 2;
+			#divAnticorrosivoLabel {
+				position: absolute;
+				left: 0mm;
+				top: 30mm;
+				width: 22mm;
+				height: 3mm;
 			}
-			.cell-AD3 {
-				-ms-grid-row: 13;
-				-ms-grid-column: 3;
+			#divAnticorrosivoX {
+				position: absolute;
+				left: 22mm;
+				top: 30mm;
+				width: 16mm;
+				height: 3mm;
 			}
-			.cell-AE3 {
-				-ms-grid-row: 13;
-				-ms-grid-column: 4;
+			#divNotasRolamPintados {
+				position: absolute;
+				left: 0mm;
+				top: 36mm;
+				width: 65mm;
+				height: 3mm;
 			}
-			.cell-AF3 {
-				-ms-grid-row: 14;
-				-ms-grid-column: 3;
+			#divCodigosRPLabel {
+				position: absolute;
+				left: 0mm;
+				top: 39mm;
+				width: 18mm;
+				height: 3mm;
 			}
-			.cell-AG3 {
-				-ms-grid-row: 15;
-				-ms-grid-column: 1;
+			#divPrimerRPLabel {
+				position: absolute;
+				left: 18mm;
+				top: 39mm;
+				width: 16mm;
+				height: 3mm;
 			}
-			.cell-AH3 {
-				-ms-grid-row: 15;
-				-ms-grid-column: 2;
+			#divAcabamenoRPLabel {
+				position: absolute;
+				left: 34mm;
+				top: 39mm;
+				width: 21mm;
+				height: 3mm;
 			}
-			.cell-AI3 {
-				-ms-grid-row: 15;
-				-ms-grid-column: 3;
+			#divValidadeRPLabel {
+				position: absolute;
+				left: 55mm;
+				top: 39mm;
+				width: 16mm;
+				height: 3mm;
 			}
-			.cell-AJ3 {
-				-ms-grid-row: 1;
-				-ms-grid-column: 5;
-				-ms-grid-row-span: 15;
+			#divCodigosRPCompA {
+				position: absolute;
+				left: 0mm;
+				top: 42mm;
+				width: 18mm;
+				height: 3mm;
+			}
+			#divPrimerRPCompA {
+				position: absolute;
+				left: 18mm;
+				top: 42mm;
+				width: 16mm;
+				height: 3mm;
+			}
+			#divAcabamenoRPCompA {
+				position: absolute;
+				left: 34mm;
+				top: 42mm;
+				width: 21mm;
+				height: 3mm;
+			}
+			#divValidadeRPCompA {
+				position: absolute;
+				left: 55mm;
+				top: 42mm;
+				width: 16mm;
+				height: 3mm;
+			}
+			#divCodigosRPCompB {
+				position: absolute;
+				left: 0mm;
+				top: 45mm;
+				width: 18mm;
+				height: 3mm;
+			}
+			#divPrimerRPCompB {
+				position: absolute;
+				left: 18mm;
+				top: 45mm;
+				width: 16mm;
+				height: 3mm;
+			}
+			#divAcabamenoRPCompB {
+				position: absolute;
+				left: 34mm;
+				top: 45mm;
+				width: 21mm;
+				height: 3mm;
+			}
+			#divValidadeRPCompB {
+				position: absolute;
+				left: 55mm;
+				top: 45mm;
+				width: 16mm;
+				height: 3mm;
+			}
+			#divCodigosRPSolvente {
+				position: absolute;
+				left: 0mm;
+				top: 48mm;
+				width: 18mm;
+				height: 3mm;
+			}
+			#divPrimerRPSolvente {
+				position: absolute;
+				left: 18mm;
+				top: 48mm;
+				width: 16mm;
+				height: 3mm;
+			}
+			#divAcabamenoRPSolvente {
+				position: absolute;
+				left: 34mm;
+				top: 48mm;
+				width: 21mm;
+				height: 3mm;
+			}
+			#divValidadeRPSolvente {
+				position: absolute;
+				left: 55mm;
+				top: 48mm;
+				width: 16mm;
+				height: 3mm;
+			}
+			#divValidadeBALabel {
+				position: absolute;
+				left: 34mm;
+				top: 51mm;
+				width: 21mm;
+				height: 3mm;
+			}
+			#divBaseDaguaLabel {
+				position: absolute;
+				left: 0mm;
+				top: 54mm;
+				width: 18mm;
+				height: 3mm;
+			}
+			#divBaseDagua {
+				position: absolute;
+				left: 18mm;
+				top: 54mm;
+				width: 16mm;
+				height: 3mm;
+			}
+			#divBaseDaguaValidade {
+				position: absolute;
+				left: 34mm;
+				top: 54mm;
+				width: 21mm;
+				height: 3mm;
+			}
+			#divImagemRolamento {
+				position: absolute;
+				left: 72mm;
+				top: 2mm;
+				width: 123mm;
+				height: 65mm;
 				border: 1px solid blue;
+				background-image: url("{% static 'images/rolamentoIndicacoes.jpg' %}");
+				background-size: cover;
 			}
-			.grid-container4 {
-				width: 196mm;
-				display: grid;
-				grid-template-rows: 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm 3.4mm;
-				grid-template-columns: 7mm 25mm 21mm 20mm 21mm 20mm 21mm 20mm 1fr;
-
-				display: -ms-grid;
-				-ms-grid-rows: 8mm 13mm 13mm 13mm 13mm;
-				-ms-grid-columns: 16mm 13mm 105mm 26mm 1fr 1fr 1fr;
-				padding: 1.5mm;
+			#container4 {
+				position: absolute;
+				left: 7mm;
+				top: 127mm;
+				width: 197mm;
+				height: 160mm;
 			}
-			.cell-A4 {
-				-ms-grid-row: 1;
-				-ms-grid-column: 1;
+			#divOperacaoLabel {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 20mm;
+				height: 8mm;
+				padding-top: 2.6mm;
+				background-color: #ffc000;
 			}
-			.cell-B4 {
-				-ms-grid-row: 1;
-				-ms-grid-column: 2;
+			#divItemLabel {
+				position: absolute;
+				left: 20mm;
+				top: 0;
+				width: 10mm;
+				height: 8mm;
+				padding-top: 2.6mm;
+				background-color: #ffc000;
 			}
-			.cell-C4 {
-				-ms-grid-row: 1;
-				-ms-grid-column: 3;
+			#divRequisitoLabel {
+				position: absolute;
+				left: 30mm;
+				top: 0;
+				width: 90mm;
+				height: 8mm;
+				padding-top: 2.6mm;
+				background-color: #ffc000;
 			}
-			.cell-D4 {
-				-ms-grid-row: 1;
-				-ms-grid-column: 4;
+			#divMetodoInstrucaoLabel {
+				position: absolute;
+				left: 120mm;
+				top: 0;
+				width: 35mm;
+				height: 8mm;
+				padding-top: 2.6mm;
+				background-color: #ffc000;
 			}
-			.cell-E4 {
-				-ms-grid-row: 1;
-				-ms-grid-column: 5;
+			#divResultadosLabel {
+				position: absolute;
+				left: 155mm;
+				top: 0;
+				width: 41.5mm;
+				height: 8mm;
+				padding: 0.8mm;
+				background-color: #ffc000;
 			}
-			.cell-F4 {
-				-ms-grid-row: 1;
-				-ms-grid-column: 6;
+			#divResultadosSerieILabel {
+				position: absolute;
+				left: 0;
+				top: 4mm;
+				width: 13.8mm;
+				height: 4mm;
+				padding-top: 0.5mm;
 			}
-			.cell-G4 {
-				-ms-grid-row: 1;
-				-ms-grid-column: 7;
+			#divResultadosSerieIILabel {
+				position: absolute;
+				left: 13.8mm;
+				top: 4mm;
+				width: 13.8mm;
+				height: 4mm;
+				padding: 0.5mm;
+			}
+			#divResultadosSerieIIILabel {
+				position: absolute;
+				left: 27.6mm;
+				top: 4mm;
+				width: 13.8mm;
+				height: 4mm;
+				padding: 0.5mm;
+			}
+			.divItemValores {
+				position: absolute;
+				left: 20mm;
+				width: 10mm;
+				height: 13.81mm;
+				padding-top: 5mm;
+				text-align: center;
+			}
+			.divRequisitoValores {
+				position: absolute;
+				left: 30mm;
+				width: 90mm;
+				height: 13.81mm;
+				padding: 0.8mm;
+				font-size: 0.7rem;
+			}
+			.divMetodoInstrucaoValores {
+				position: absolute;
+				left: 120mm;
+				width: 35mm;
+				height: 13.81mm;
+				padding-top: 2.6mm;
+				font-size: 0.7rem;
+				text-align: center;
+			}
+			.divResultadosSerieIValores {
+				position: absolute;
+				left: 155mm;
+				width: 13.8mm;
+				height: 13.81mm;
+				padding-top: 2.3mm;
+				font-size: 0.8rem;
+				text-align: center;
+			}
+			.divResultadosSerieIIValores {
+				position: absolute;
+				left: 168.8mm;
+				width: 13.8mm;
+				height: 13.81mm;
+				padding-top: 2.3mm;
+				font-size: 0.8rem;
+				text-align: center;
+			}
+			.divResultadosSerieIIIValores {
+				position: absolute;
+				left: 182.6mm;
+				width: 13.8mm;
+				height: 13.81mm;
+				padding-top: 2.3mm;
+				font-size: 0.8rem;
+				text-align: center;
 			}
 			.footer {
 				position: absolute;
-				background-color: red;
-				width: 100px;
-				height: 100px;
+				left: 0mm;
+				top: 290mm;
+				width: 210mm;
+				text-align: center;
+			}
+			#PBA030Label {
+				position: absolute;
+				left: 0mm;
+				top: 8mm;
+				width: 20mm;
+				height: 69.05mm;
+				padding-top: 32mm;
+				font-size: 0.9rem;
+				text-align: center;
+			}
+			#PBB040Label {
+				position: absolute;
+				left: 0mm;
+				top: 77.05mm;
+				width: 20mm;
+				height: 41.43mm;
+				padding-top: 18mm;
+				font-size: 0.9rem;
+				text-align: center;
+			}
+			#PAA050Label {
+				position: absolute;
+				left: 0mm;
+				top: 118.48mm;
+				width: 20mm;
+				height: 13.81mm;
+				padding-top: 4mm;
+				font-size: 0.9rem;
+				text-align: center;
+			}
+			#DOISQT060Label {
+				position: absolute;
+				left: 0mm;
+				top: 132.29mm;
+				width: 20mm;
+				height: 27.62mm;
+				padding-top: 11mm;
+				font-size: 0.9rem;
+				text-align: center;
 			}
 		</style>
  </head>
  <body>
-		<div class="grid-container1 bordab bordat bordal bordar">
-			<div class="cell-A1 bordar text-center">
-				logo
-			</div>
-			<div class="cell-B1 bordar fonte1vh">
-				<span class="font-weight-bold">Documento (Document)</span>
-			</div>
-			<div class="cell-C1 fonte1vh">
-				<span class="font-weight-bold">IDENTIFICAÇÃO</span><br />
-				IP XX XXX 19
-			</div>
+	<div id="container1" class="bordab bordat bordal bordar">
+		<div id="divLogo" class="bordar text-center"></div>
+		<div id="divDocumento" class="bordar fonte3mm">
+			<span class="font-weight-bold">Documento (Document)</span>
+		</div>
+		<div id="divIdentificacao" class="fonte3mm">
+			<span class="font-weight-bold">IDENTIFICAÇÃO</span><br />
+			IP XX XXX 19
+		</div>
 
-			<div class="cell-D1 bordar fonte1_75vh text-center">
-				PLANO DE CONTROLE: ROD02637-050D018-002-000
+		<div id="divDocumentoNome" class="bordar fonte4_5mm text-center">
+			PLANO DE CONTROLE: ROD02637-050D018-002-000
+		</div>
+		<div id="divNumRevisao" class="bordat fonte3mm">
+			<span class="font-weight-bold">Nº REVISÃO</span><br />
+			00
+		</div>
+		<div id="divDataEmissao" class="bordar bordat fonte3mm text-center pt-2">
+			<span class="font-weight-bold">DATA EMISSÃO</span><br />
+			16/05/2019
+		</div>
+		<div id="divDataRevisao" class="bordar bordat fonte3mm text-center pt-2">
+			<span class="font-weight-bold">DATA REVISÃO</span><br />
+			16/05/2019
+		</div>
+		<div id="divLogoLiebherr" class="bordat fonte3mm text-center"></div>
+	</div>
+	<div id="container2" class="bordat bordab bordal bordar">
+		<div id="divMO" class="bordar fonte3_5mm bordab">
+			<span class="font-weight-bold">MO:</span> {{ headerPlanoControle.mo }}
+		</div>
+		<div id="divSerieI" class="bordar fonte3_5mm bordab">
+			<span class="font-weight-bold">Série I:</span> {{ headerPlanoControle.seriei }}
+		</div>
+		<div id="divSerieII" class="bordar fonte3_5mm bordab">
+			<span class="font-weight-bold">Série II:</span> {{ headerPlanoControle.serieii }}
+		</div>
+		<div id="divSerieIII" class="bordar fonte3_5mm bordab">
+			<span class="font-weight-bold">Série III:</span> {{ headerPlanoControle.serieiii }}
+		</div>
+		<div id="divQtdePecas" class="bordar fonte3_5mm bordab">
+			<span class="font-weight-bold">Quantidade de peças:</span>
+			1
+		</div>
+		<div id="divControladoPor" class="fonte3_5mm bordar">
+			<span class="font-weight-bold">Controlado por:</span> {{nomeUsuario}}
+		</div>
+		<div id="divControladoPorRG"  class="fonte3_5mm bordar">
+			<span class="font-weight-bold">RG:</span> {{rgUsuario}}
+		</div>
+		<div id="divControladoPorData" class="fonte3_5mm bordar">
+			<span class="font-weight-bold">Data:</span> {% now "SHORT_DATE_FORMAT" %}
+		</div>
+	</div>
+	<div id="container3" class="bordab bordal bordar">
+		<div id="divAplicavelLabel" class="fonte3_3mm font-weight-bold bordal text-center">
+			Aplicável
+		</div>
+		<div id="divJateamentoLabel" class="fonte3_3mm font-weight-bold text-center">
+			Jateamento
+		</div>
+		<div id="divJateamentoX" class="fonte3_3mm bordal text-center">
+			X
+		</div>
+		<div id="divZincoLabel" class="fonte3_3mm font-weight-bold text-center">
+			Zinco
+		</div>
+		<div id="divZincoX" class="fonte3_3mm bordal text-center">
+			X
+		</div>
+		<div id="divPrimerLabel" class="fonte3_3mm font-weight-bold text-center">
+			Primer
+		</div>
+		<div id="divPrimerX" class="fonte3_3mm bordal text-center">
+
+		</div>
+		<div id="divPinturaLabel" class="fonte3_3mm font-weight-bold text-center">
+			Pintura*
+		</div>
+		<div id="divPinturaX" class="fonte3_3mm bordal text-center">
+
+		</div>
+		<div id="divDeltatoneLabel" class="fonte3_3mm font-weight-bold text-center">
+			Deltatone
+		</div>
+		<div id="divDeltatoneX" class="fonte3_3mm bordal text-center">
+
+		</div>
+		<div id="divAnticorrosivoLabel" class="fonte3_3mm font-weight-bold text-center">
+			Anticorrosivo
+		</div>
+		<div id="divAnticorrosivoX" class="fonte3_3mm bordal text-center">
+			X
+		</div>
+		<div id="divNotasRolamPintados" class="fonte3_3mm font-weight-bold text-center">
+			* Nota: Rolamentos Pintados
+		</div>
+		<div id="divCodigosRPLabel" class="fonte3_3mm font-weight-bold text-center">
+			Códigos
+		</div>
+		<div id="divPrimerRPLabel" class="fonte3_3mm font-weight-bold bordal text-center">
+			Primer
+		</div>
+		<div id="divAcabamenoRPLabel" class="fonte3_3mm font-weight-bold bordal text-center">
+			Acabamento
+		</div>
+		<div id="divValidadeRPLabel" class="fonte3_3mm font-weight-bold bordal text-center">
+			Validade
+		</div>
+		<div id="divCodigosRPCompA" class="fonte3_3mm font-weight-bold text-center">
+			Comp. A
+		</div>
+		<div id="divPrimerRPCompA" class="fonte3_3mm bordal text-center">
+		</div>
+		<div id="divAcabamenoRPCompA" class="fonte3_3mm bordal text-center">
+		</div>
+		<div id="divValidadeRPCompA" class="fonte3_3mm bordal text-center">
+			__/__/__
+		</div>
+		<div id="divCodigosRPCompB" class="fonte3_3mm font-weight-bold text-center">
+			Comp. B
+		</div>
+		<div id="divPrimerRPCompB" class="fonte3_3mm bordal text-center">
+		</div>
+		<div id="divAcabamenoRPCompB" class="fonte3_3mm bordal text-center">
+		</div>
+		<div id="divValidadeRPCompB" class="fonte3_3mm bordal text-center">
+			__/__/__
+		</div>
+		<div id="divCodigosRPSolvente" class="fonte3_3mm font-weight-bold text-center">
+			Solvente
+		</div>
+		<div id="divPrimerRPSolvente" class="fonte3_3mm bordal text-center">
+		</div>
+		<div id="divAcabamenoRPSolvente" class="fonte3_3mm bordal text-center">
+		</div>
+		<div id="divValidadeRPSolvente" class="fonte3_3mm bordal text-center">
+			__/__/__
+		</div>
+		<div id="divValidadeBALabel" class="fonte3_3mm font-weight-bold text-center">
+			Validade
+		</div>
+		<div id="divBaseDaguaLabel" class="fonte3_3mm font-weight-bold text-center">
+			Base d'água
+		</div>
+		<div id="divBaseDagua" class="fonte3_3mm bordal text-center">
+		</div>
+		<div id="divBaseDaguaValidade" class="fonte3_3mm bordal text-center">
+			__/__/__
+		</div>
+		<div id="divImagemRolamento" class="fonte3_3mm bordal text-center">
+
+		</div>
+	</div>
+	<div id="container4" class="bordab bordal bordar">
+		<div id="divOperacaoLabel" class="fonte3_3mm bordab text-center">
+			OPERAÇÃO
+		</div>
+		<div id="divItemLabel" class="fonte3_3mm bordal bordab text-center">
+			ITEM
+		</div>
+		<div id="divRequisitoLabel" class="fonte3_3mm bordal bordab text-center">
+			REQUISITO
+		</div>
+		<div id="divMetodoInstrucaoLabel" class="fonte3_3mm bordal bordab text-center">
+			MÉTODO/INSTRUÇÃO
+		</div>
+		<div id="divResultadosLabel" class="fonte3_3mm bordal bordab text-center">
+			RESULTADOS/RG
+			<div id="divResultadosSerieILabel" class="fonte3_3mm bordab bordat text-center">
+				Série I
 			</div>
-			<div class="cell-E1 bordat fonte1vh">
-				<span class="font-weight-bold">Nº REVISÃO</span><br />
-				00
+			<div id="divResultadosSerieIILabel" class="fonte3_3mm bordal bordab bordat text-center">
+				Série II
 			</div>
-			<div class="cell-F1 bordar bordat fonte1vh text-center">
-				<span class="font-weight-bold">DATA EMISSÃO</span><br />
-				16/05/2019
-			</div>
-			<div class="cell-G1 bordar bordat fonte1vh text-center">
-				<span class="font-weight-bold">DATA REVISÃO</span><br />
-				16/05/2019
-			</div>
-			<div class="cell-H1 bordat fonte1vh text-center">
-				logo liebherr
+			<div id="divResultadosSerieIIILabel" class="fonte3_3mm bordal bordab bordat text-center">
+				Série III
 			</div>
 		</div>
-		<div class="grid-container2 bordat bordal bordar">
-			<div class="SEP2A">
+		{% for i in listInspecoesPCInformacoes %}
+			{% widthratio 13.81 1 forloop.counter0 as topPosicaoInspecao %}
+			<div class="divItemValores bordal bordab" style="top: {{ topPosicaoInspecao|add:8 }}mm; background-color: {{i.2}};">
+				{{i.1}}
 			</div>
-			<div class="cell-A2 bordar fonte1_5vh bordab">
-				<span class="font-weight-bold">MO:</span>
-				A001234
+			<div class="divRequisitoValores bordal bordab" style="top: {{ topPosicaoInspecao|add:8 }}mm;">
+				{{i.3}}
 			</div>
-			<div class="cell-C2 bordar fonte1_5vh bordab">
-				<span class="font-weight-bold">Série I:</span>
-				35
+			<div class="divMetodoInstrucaoValores bordal bordab" style="top: {{ topPosicaoInspecao|add:8 }}mm;">
+				{{i.5}}
 			</div>
-			<div class="cell-E2 bordar fonte1_5vh bordab">
-				<span class="font-weight-bold">Série II:</span>
-				36
+		{% endfor %}
+		{% for j in listInspecoesPCSerieI %}
+			{% widthratio 13.81 1 forloop.counter0 as topPosicaoInspecao %}
+			<div class="divResultadosSerieIValores bordal bordab" style="top: {{ topPosicaoInspecao|add:8 }}mm;">
+				{{j.0}}<br />
+				{{j.1}}
 			</div>
-			<div class="cell-G2 bordar fonte1_5vh bordab">
-				<span class="font-weight-bold">Série III:</span>
-				37
+		{% endfor %}
+		{% for j in listInspecoesPCSerieII %}
+			{% widthratio 13.81 1 forloop.counter0 as topPosicaoInspecao %}
+			<div class="divResultadosSerieIIValores bordal bordab" style="top: {{ topPosicaoInspecao|add:8 }}mm;">
+				{{j.0}}<br />
+				{{j.1}}
 			</div>
-			<div class="cell-I2 bordab"></div>
-			<div class="cell-SEP2B">
+		{% endfor %}
+		{% for j in listInspecoesPCSerieIII %}
+			{% widthratio 13.81 1 forloop.counter0 as topPosicaoInspecao %}
+			<div class="divResultadosSerieIIIValores bordal bordab" style="top: {{ topPosicaoInspecao|add:8 }}mm;">
+				{{j.0}}{{j.2}}<br />
+				{{j.1}}
 			</div>
-			<div class="cell-J2 bordar fonte1_5vh bordab">
-				<span class="font-weight-bold">Quantidade de peças:</span>
-				1
-			</div>
-			<div class="cell-L2 fonte1_5vh bordab">
-			</div>
-			<div class="cell-SEP2C">
-			</div>
-			<div class="cell-M2 fonte1_5vh bordab">
-				<span class="font-weight-bold">Controlado por:</span> 5170 - Paulo Henrique
-			</div>
-			<div class="cell-N2 fonte1_5vh bordab">
-				<span class="font-weight-bold">RG:</span>
-			</div>
-			<div class="cell-O2 fonte1_5vh bordab">
-				<span class="font-weight-bold">Data:</span>
-			</div>
-			<div class="cell-P2 fonte1_5vh bordab">
-			</div>
+		{% endfor %}
+		<div id="PBA030Label" class="bordab">
+			030 PBA
 		</div>
-		<div class="grid-container3 bordab bordal bordar">
-			<div class="cell-A3 bordab">
-
-			</div>
-			<div class="cell-B3 fonte1_3vh font-weight-bold bordal bordab text-center">
-				Aplicável
-			</div>
-			<div class="cell-C3 fonte1_3vh font-weight-bold text-center">
-				Jateamento
-			</div>
-			<div class="cell-D3 fonte1_3vh bordal text-center">
-				X
-			</div>
-			<div class="cell-E3 fonte1_3vh font-weight-bold text-center">
-				Zinco
-			</div>
-			<div class="cell-F3 fonte1_3vh bordal text-center">
-				X
-			</div>
-			<div class="cell-G3 fonte1_3vh font-weight-bold text-center">
-				Primer
-			</div>
-			<div class="cell-H3 fonte1_3vh bordal text-center">
-
-			</div>
-			<div class="cell-I3 fonte1_3vh font-weight-bold text-center">
-				Pintura
-			</div>
-			<div class="cell-J3 fonte1_3vh bordal text-center">
-
-			</div>
-			<div class="cell-K3 fonte1_3vh font-weight-bold text-center">
-				Deltatone
-			</div>
-			<div class="cell-L3 fonte1_3vh bordal text-center">
-
-			</div>
-			<div class="cell-M3 fonte1_3vh font-weight-bold text-center">
-				Anticorrosivo
-			</div>
-			<div class="cell-N3 fonte1_3vh bordal text-center">
-				X
-			</div>
-			<div class="cell-O3 fonte1_3vh font-weight-bold bordab text-center">
-				* Nota: Rolamentos Pintados
-			</div>
-			<div class="cell-P3 fonte1_3vh font-weight-bold text-center">
-				Códigos
-			</div>
-			<div class="cell-Q3 fonte1_3vh font-weight-bold bordal text-center">
-				Primer
-			</div>
-			<div class="cell-R3 fonte1_3vh font-weight-bold bordal text-center">
-				Acabamento
-			</div>
-			<div class="cell-S3 fonte1_3vh font-weight-bold bordal text-center">
-				Validade
-			</div>
-			<div class="cell-T3 fonte1_3vh font-weight-bold text-center">
-				Comp. A
-			</div>
-			<div class="cell-U3 fonte1_3vh bordal text-center">
-
-			</div>
-			<div class="cell-V3 fonte1_3vh bordal text-center">
-
-			</div>
-			<div class="cell-X3 fonte1_3vh bordal text-center">
-				__/__/__
-			</div>
-			<div class="cell-Y3 fonte1_3vh font-weight-bold text-center">
-				Comp. B
-			</div>
-			<div class="cell-W3 fonte1_3vh bordal text-center">
-
-			</div>
-			<div class="cell-Z3 fonte1_3vh bordal text-center">
-
-			</div>
-			<div class="cell-AA3 fonte1_3vh bordal text-center">
-				__/__/__
-			</div>
-			<div class="cell-AB3 fonte1_3vh font-weight-bold text-center">
-				Solvente
-			</div>
-			<div class="cell-AC3 fonte1_3vh bordal text-center">
-
-			</div>
-			<div class="cell-AD3 fonte1_3vh bordal text-center">
-
-			</div>
-			<div class="cell-AE3 fonte1_3vh bordal text-center">
-				__/__/__
-			</div>
-			<div class="cell-AF3 fonte1_3vh font-weight-bold text-center">
-				Validade
-			</div>
-			<div class="cell-AG3 fonte1_3vh font-weight-bold text-center">
-				Base d'água
-			</div>
-			<div class="cell-AH3 fonte1_3vh font-weight-bold bordal text-center">
-
-			</div>
-			<div class="cell-AI3 fonte1_3vh bordal text-center">
-				__/__/__
-			</div>
-			<div class="cell-AJ3 fonte1_3vh bordal text-center">
-				imagem rolamento
-			</div>
+		<div id="PBB040Label" class="bordab">
+			040 PBB
 		</div>
-		<div class="grid-container4 bordab bordal bordar">
-			<div class="cell-A4 fonte1_5vh text-center">
-				OPERAÇÃO
-			</div>
-			<div class="cell-B4 fonte1_5vh bordal text-center">
-				ITEM
-			</div>
-			<div class="cell-C4 fonte1_5vh bordal text-center">
-				REQUISITO
-			</div>
-			<div class="cell-D4 fonte1_5vh bordal text-center">
-				MÉTODO/INSTRUÇÃO
-			</div>
+		<div id="PAA050Label" class="bordab">
+			050 PAA
 		</div>
-		<div class="footer">
-			Este documento é classificado como SOMENTE USO INTERNO.<br />
-			Não é permitido a distribuição. Os critérios de acesso, utilização, armazenamento e descarte estão descritos na NC DIR 001.
+		<div id="DOISQT060Label">
+			060 2QT
 		</div>
+	</div>
+	<div class="footer fonte3mm">
+		Este documento é classificado como SOMENTE USO INTERNO.<br />
+		Não é permitido a distribuição. Os critérios de acesso, utilização, armazenamento e descarte estão descritos na NC DIR 001.
+	</div>
  </body>
 </html>

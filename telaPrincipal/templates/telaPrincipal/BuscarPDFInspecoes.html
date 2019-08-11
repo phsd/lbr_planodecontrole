@@ -1,0 +1,67 @@
+{% extends 'telaPrincipal/base.html' %}
+{% load static %}
+
+{% block title %}Plano de Controle{% endblock %}
+{% block h1Pagina %}Gerar Plano de Controle{% endblock %}
+
+{% block content %}
+  <div class="content mt-3">
+      <div class="animated fadeIn">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-body">
+                          <table id="tableGerarPDF" class="table table-hover table-bordered text-center">
+                            <col width="10%">
+                            <col width="20%">
+                            <col width="60%">
+                            <col width="10%">
+                              <thead>
+                                  <tr>
+                                      <th class="text-left">MO</th>
+                                      <th>Série</th>
+                                      <th>Data</th>
+                                      <th>PDF</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                {% for i in busca %}
+                                  <tr>
+                                    <td class="text-left align-middle">{{i.0}}</td>
+                                    <td>
+                                      {{i.1}}, {{i.2}}, {{i.3}}
+                                    </td>
+                                    <td>
+                                      {{i.4}}
+                                    </td>
+                                    <td class="align-middle">
+                                        <a href="{% url 'telaPrincipal:VisualizarPDFInspecoes' i.0 %}" target="_blank">Abrir PDF</a>
+                                    </td>
+                                  </tr>
+                                {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div><!-- .animated -->
+  </div><!-- .content -->
+  <link rel="stylesheet" href="{% static 'css/inspecoesGerarPDF.css' %}">
+
+
+  <script src="{% static 'vendors/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+  <script src="{% static 'vendors/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+  <script src="{% static 'vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js' %}"></script>
+  <script src="{% static 'assets/js/init-scripts/data-table/datatables-init.js' %}"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#tableGerarPDF').dataTable( {
+        "language": {
+          "url": "{% static 'vendors/datatables.net/Portuguese-Brasil.json' %}"
+        }
+      });
+    });
+</script>
+{% endblock %}

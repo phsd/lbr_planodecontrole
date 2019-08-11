@@ -64,15 +64,15 @@
           <div class="m-2 p-2 mb-3" style="display:none;" id="moencontrada">
             <div class="btn-group btn-group-toggle grupoCBserie w-100" data-toggle="buttons">
               <label class="btn w-100 btn-outline-success labelCBserie">
-                <input type="radio" name="serie" value="1">
+                <input type="radio" name="serie" id="inputserie1" serie123="1" value="">
                 <span id="labelserie1"><b> Série I:</b> <span id="seriei"></span></span>
               </label>
               <label class="btn w-100 btn-outline-success labelCBserie">
-                <input type="radio" name="serie" value="2">
+                <input type="radio" name="serie" id="inputserie2" serie123="2" value="">
                 <span id="labelserie2"><b> Série II:</b> <span id="serieii"></span></span>
               </label>
               <label class="btn w-100 btn-outline-success labelCBserie">
-                <input type="radio" name="serie" value="3">
+                <input type="radio" name="serie" id="inputserie3" serie123="3" value="">
                 <span id="labelserie3"><b> Série III:</b> <span id="serieiii"></span></span>
               </label>
             </div>
@@ -93,7 +93,7 @@
           	<span id="serieHeader"></span><br />
             <b>Operador:</b> {{request.user.username}} - {{request.user.first_name}}
           </div>
-          <div style="color: #FFFFFF;" id="divDescricao" class="m-2 p-2 mb-3">
+          <div id="divDescricao" class="m-2 p-2 mb-3">
           	<b>Operação:</b><br />
             <span id="operacao"></span><br /><br />
           	<b>Requisito:</b><br />
@@ -177,8 +177,11 @@
                   $("#monaoencontrada").css("display", "none");
                   $("#hiddenidHPC").val(this.idHPC);
                   $("#seriei").text(this.seriei);
+                  $("#inputserie1").val(this.seriei);
                   $("#serieii").text(this.serieii);
+                  $("#inputserie2").val(this.serieii);
                   $("#serieiii").text(this.serieiii);
+                  $("#inputserie3").val(this.serieiii);
                 }
                 else {
                   $("#moencontrada").css("display", "none");
@@ -201,8 +204,11 @@
             $("#monaoencontrada").css("display", "none");
             $("#hiddenidHPC").val("");
             $("#seriei").text("");
+            $("#inputserie1").val("");
             $("#serieii").text("");
+            $("#inputserie3").val("");
             $("#serieiii").text("");
+            $("#inputserie3").val("");
             $('input[name="serie"]').prop("checked", false);
             $('.labelCBserie').removeClass("active");
           });
@@ -214,7 +220,7 @@
       		$("#passo1_proximo").click(function () {
             $("#liPasso2").addClass('completed');
             $("#moHeader").text($('#txbMO').val());
-            $("#serieHeader").html($("#labelserie" + $('input[name="serie"]:checked').val()).html());
+            $("#serieHeader").html($("#labelserie" + $('input[name="serie"]:checked').attr("serie123")).html());
             $("#passo2_proximo").addClass('disabled');
 
             var url = $("#formInspecao").attr("dataCarregarItemInspecao");  // get the url of the `load_cities` view
@@ -248,7 +254,7 @@
                     $("#requisito").text(value2.requisito);
                     $("#metodoinstrucao").text(value2.metodoinstrucao);
                     $("#divDescricao").css("background-color", value2.cor);
-                    $("#divDescricao").css("color", "#FFFFFF");
+                    $("#divDescricao").css("color", "#000000");
                     $("#unidade").text(value2.unidade);
                     if (value2.unidade == "OK/NOK") {
                       $("#divresultado").html('<select class="form-control" id="valorresultado"><option value="">-----</option><option value="OK">OK</option><option value="NOK">NOK</option></select>');
@@ -279,6 +285,10 @@
             $("#divDescricao").css("color", "#FFFFFF");
             $("#divresultado").html("");
             $("#unidade").text("");
+
+            $("#sempermissao").css("display", "none");
+            $("#msgFinalizado").css("display", "none");
+
             $("#passo1").effect("slide", {direction: "left"}, 200);
             $("#passo2").effect("drop", {direction: "right"}, 200);
           });
@@ -317,10 +327,11 @@
                   $("#resumoRegistro").css("display", "block");
                   $("#divSalvocomSucessoFalse").css("display", "none");
                   $("#infoRegistro").html("<b>MO: </b>" + $('#txbMO').val() + "<br/ >");
-                  $("#infoRegistro").append($("#labelserie" + $('input[name="serie"]:checked').val()).html() + "<br/ >");
+                  $("#infoRegistro").append($("#labelserie" + $('input[name="serie"]:checked').attr("serie123")).html() + "<br/ >");
                   $("#infoRegistro").append("<b>Operador: </b>{{request.user.username}} - {{request.user.first_name}}" + "<br/ >");
                   $("#infoRegistro").append("<b>Operação: </b>" + $("#operacao").html() + "<br/ >");
-                  $("#infoRegistro").append("<b>Requisito: </b>" + $("#requisito").html() + "<br/ >");
+                  $("#infoRegistro").append("<b>Requisito: </b>" + $("#item").html() + " - ");
+                  $("#infoRegistro").append($("#requisito").html() + "<br/ >");
                   $("#infoRegistro").append("<b>Resultado: </b>" + $("#valorresultado").val());
                   if ($("#unidade").html() != "OK/NOK") {
                     $("#infoRegistro").append($("#unidade").html());

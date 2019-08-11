@@ -5,7 +5,8 @@ class headerPlanoControle (models.Model):
     mo = models.CharField(
         max_length=50,
         null=False,
-        blank=False
+        blank=False,
+        unique=True
     )
     seriei = models.IntegerField(
         null=False,
@@ -21,6 +22,13 @@ class headerPlanoControle (models.Model):
         null=False,
         blank=False,
         db_index=True
+    )
+    pdfcriado = models.BooleanField(
+        default=0
+    )
+    datapdfcriado = models.DateTimeField(
+        null=True,
+        blank=True
     )
     def __str__(self):
         return self.mo
@@ -75,5 +83,5 @@ class inspecaoPlanoControle (models.Model):
         null=False,
         blank=False
     )
-    id_usuario = models.IntegerField(null=False, blank=False)
+    username_usuario = models.IntegerField(null=False, blank=False)
     dataRegistro = models.DateTimeField(auto_now_add=True)

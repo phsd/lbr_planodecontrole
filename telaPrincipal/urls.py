@@ -15,5 +15,8 @@ urlpatterns = [
     url(r'^ajax/carregarmo/', views.carregarMO, name='ajaxCarregarMO'),
     url(r'^ajax/carregariteminspecao/', views.carregarItemInspecao, name='ajaxCarregarItemInspecao'),
     url(r'^ajax/registrarinspecao/', views.registrarInspecao, name='ajaxRegistrarInspecao'),
-    url(r'^pdf/PDF_IPXX_XXX_19/$', views.PDF_IPXX_XXX_19, name='PDF_IPXX_XXX_19'),
+    url(r'^pdf/PDF_IPXX_XXX_19/(?P<mo>[-\w]+)/$', views.PDF_IPXX_XXX_19, name='PDF_IPXX_XXX_19'),
+    url(r'^sys/$', views.GerarPDFInspecoes, name='GerarPDFInspecoes'),
+    url(r'^buscarPDF/$', views.BuscarPDFInspecoes, name='BuscarPDFInspecoes'),
+    url(r'^visualizarPDF/(?P<mo>[-\w]+)/$', views.VisualizarPDFInspecoes, name='VisualizarPDFInspecoes'),
 ]

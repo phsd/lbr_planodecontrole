@@ -1,0 +1,85 @@
+{% extends 'telaPrincipal/base.html' %}
+{% load static %}
+
+{% block title %}Plano de Controle{% endblock %}
+{% block h1Pagina %}Gerar Plano de Controle{% endblock %}
+
+{% block content %}
+  <div class="content mt-3">
+      <div class="animated fadeIn">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-body">
+                          <table id="tableGerarPDF" class="table table-hover table-bordered text-center">
+                            <col width="10%">
+                            <col width="6%">
+                            <col width="74%">
+                            <col width="10%">
+                              <thead>
+                                  <tr>
+                                      <th class="text-left">MO</th>
+                                      <th>Série</th>
+                                      <th>Inspeção</th>
+                                      <th>PDF</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                {% for i in linhaMOSGerarPDF %}
+                                  <tr>
+                                    <td class="text-left align-middle">{{i.0}}</td>
+                                    <td>
+                                      {% for j in i.1 %}
+                                        <div class="{% if forloop.revcounter > 1 %}mb-2{% endif %}" style="height:1.5rem;">
+                                          <span>{{j.1}}</span>
+                                        </div>
+                                      {% endfor %}
+                                    </td>
+                                    <td>
+                                      {% for j in i.1 %}
+                                        <div class="{% if forloop.revcounter > 1 %}mb-2{% endif %}" style="height:1.5rem; border: 1px solid grey;">
+                                          <div class="progress-bar bg-info" role="progressbar" style="width: {{j.3}}%;" aria-valuenow="{{j.2}}" aria-valuemin="0" aria-valuemax="{{CONST_NUMTOTALINSPECOES}}">
+                                            {% if j.2 > 0 %}
+                                              <span>{{j.2}} / {{CONST_NUMTOTALINSPECOES}}</span>
+                                            {% endif %}
+                                          </div>
+                                        </div>
+                                      {% endfor %}
+                                    </td>
+                                    <td class="align-middle">
+                                      {% if i.2 == 'true' %}
+                                        <a href="{% url 'telaPrincipal:PDF_IPXX_XXX_19' i.0 %}" target="_blank" class="btnGerarPDF">Gerar PDF</a>
+                                      {% else %}
+                                      {% endif %}
+                                    </td>
+                                  </tr>
+                                {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div><!-- .animated -->
+  </div><!-- .content -->
+  <link rel="stylesheet" href="{% static 'css/inspecoesGerarPDF.css' %}">
+
+
+  <script src="{% static 'vendors/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+  <script src="{% static 'vendors/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+  <script src="{% static 'vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js' %}"></script>
+  <script src="{% static 'assets/js/init-scripts/data-table/datatables-init.js' %}"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#tableGerarPDF').dataTable( {
+        "language": {
+          "url": "{% static 'vendors/datatables.net/Portuguese-Brasil.json' %}"
+        }
+      });
+    });
+    $("#tableGerarPDF").on('click', '.btnGerarPDF', function () {
+      $(this).parent().parent().remove();
+    });
+</script>
+{% endblock %}
