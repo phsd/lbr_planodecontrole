@@ -24,7 +24,7 @@ class headerPlanoControle (models.Model):
         db_index=True
     )
     pdfcriado = models.BooleanField(
-        default=0
+        default=False
     )
     datapdfcriado = models.DateTimeField(
         null=True,

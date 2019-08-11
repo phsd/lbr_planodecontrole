@@ -110,7 +110,7 @@ def GerarPDFInspecoes(request):
         ON
                 telaPrincipal_inspecaoplanocontrole.id_itemInspecaoPC_id = telaPrincipal_iteminspecaopc.id
         WHERE
-                telaPrincipal_headerplanocontrole.pdfcriado = 'False'
+                telaPrincipal_headerplanocontrole.pdfcriado = 0
         GROUP BY telaPrincipal_headerplanocontrole.id, telaPrincipal_inspecaoplanocontrole.serie
 		ORDER BY telaPrincipal_headerplanocontrole.mo, telaPrincipal_inspecaoplanocontrole.serie;'''
 
