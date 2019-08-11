@@ -253,8 +253,8 @@ def PDF_IPXX_XXX_19(request, mo):
     if os.path.exists(dirname):
         with open(os.path.join(dirname, '../media/pdfs/'+ mo +'.pdf'), 'wb') as f:
             f.write(pdf_criado)
-            #response = FileResponse(open(dirname + '/../media/pdfs/'+ mo +'.pdf', 'rb'), content_type='application/pdf')
-            #response['Content-Disposition'] = 'inline; filename={title}.pdf'.format(title=mo)
-            atualizar = models.headerPlanoControle.objects.filter(id=busca[0].id).update(pdfcriado=True, datapdfcriado=datetime.datetime.now())
-            VisualizarPDFInspecoes(request, mo)
-            #return response
+        atualizar = models.headerPlanoControle.objects.filter(id=busca[0].id).update(pdfcriado=True, datapdfcriado=datetime.datetime.now())
+
+        response = FileResponse(open(dirname + '/../media/pdfs/'+ mo +'.pdf', 'rb'), content_type='application/pdf')
+        response['Content-Disposition'] = 'inline; filename={title}.pdf'.format(title=mo)
+        return response
