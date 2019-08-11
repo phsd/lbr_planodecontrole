@@ -23,7 +23,7 @@ import os
 
 from django.http import FileResponse, Http404
 
-CONST_NUMTOTALINSPECOES = 11
+CONST_NUMTOTALINSPECOES = 2
 
 # Create your views here.
 @login_required
