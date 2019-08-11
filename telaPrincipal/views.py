@@ -180,7 +180,7 @@ def BuscarPDFInspecoes(request):
 
 def VisualizarPDFInspecoes(request, mo):
     dirname = os.path.dirname(__file__)
-    response = FileResponse(open(dirname + '/media/pdfs/'+ mo +'.pdf', 'rb'), content_type='application/pdf')
+    response = FileResponse(open(dirname + '/../media/pdfs/'+ mo +'.pdf', 'rb'), content_type='application/pdf')
     response['Content-Disposition'] = 'inline; filename={title}.pdf'.format(title=mo)
     return response
 
@@ -251,9 +251,9 @@ def PDF_IPXX_XXX_19(request, mo):
     pdf_criado = HTML(string=html, base_url=request.build_absolute_uri()).write_pdf()
     dirname = os.path.dirname(__file__)
     if os.path.exists(dirname):
-        with open(os.path.join(dirname, 'media/pdfs/'+ mo +'.pdf'), 'wb') as f:
+        with open(os.path.join(dirname, '../media/pdfs/'+ mo +'.pdf'), 'wb') as f:
             f.write(pdf_criado)
-            response = FileResponse(open(dirname + '/media/pdfs/'+ mo +'.pdf', 'rb'), content_type='application/pdf')
+            response = FileResponse(open(dirname + '/../media/pdfs/'+ mo +'.pdf', 'rb'), content_type='application/pdf')
             response['Content-Disposition'] = 'inline; filename={title}.pdf'.format(title=mo)
             atualizar = models.headerPlanoControle.objects.filter(id=busca[0].id).update(pdfcriado=True, datapdfcriado=datetime.datetime.now())
             return response
