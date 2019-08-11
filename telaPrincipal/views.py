@@ -116,46 +116,47 @@ def GerarPDFInspecoes(request):
 
     busca = models.inspecaoPlanoControle.objects.raw(b)
 
-    ultimaMOEncontrada = busca[0].mo
-    seriesdessaMO = [busca[0].seriei, busca[0].serieii, busca[0].serieiii]
-    seriesEncontradasdessaMO = []
-    mosGerarPDF = []
-    btnGerarPDF = "true"
+    if len(busca) > 0:
+        ultimaMOEncontrada = busca[0].mo
+        seriesdessaMO = [busca[0].seriei, busca[0].serieii, busca[0].serieiii]
+        seriesEncontradasdessaMO = []
+        mosGerarPDF = []
+        btnGerarPDF = "true"
 
-    for b in busca:
-        if (b.mo != ultimaMOEncontrada):
-            for i in range (0, 3):
-                if (not seriesdessaMO[i] in seriesEncontradasdessaMO):
-                    mosGerarPDF.append([ultimaMOEncontrada, seriesdessaMO[i], 0, 0])
+        for b in busca:
+            if (b.mo != ultimaMOEncontrada):
+                for i in range (0, 3):
+                    if (not seriesdessaMO[i] in seriesEncontradasdessaMO):
+                        mosGerarPDF.append([ultimaMOEncontrada, seriesdessaMO[i], 0, 0])
+                        btnGerarPDF = "false"
+
+                linhaMOSGerarPDF.append([mosGerarPDF[0][0], mosGerarPDF, btnGerarPDF])
+
+                seriesdessaMO = [0, 0, 0]
+                seriesEncontradasdessaMO = []
+                mosGerarPDF = []
+                btnGerarPDF = "true"
+
+
+            if (not b.numeroInspecaoRealizada is None):
+                mosGerarPDF.append([b.mo, b.serie, b.numeroInspecaoRealizada, round((b.numeroInspecaoRealizada/CONST_NUMTOTALINSPECOES)*100)])
+                if (b.numeroInspecaoRealizada < CONST_NUMTOTALINSPECOES):
                     btnGerarPDF = "false"
+                seriesdessaMO = [b.seriei, b.serieii, b.serieiii]
+                seriesEncontradasdessaMO.append(b.serie)
+                ultimaMOEncontrada = b.mo
+            else:
+                seriesdessaMO = [b.seriei, b.serieii, b.serieiii]
+                seriesEncontradasdessaMO.append(b.serie)
+                ultimaMOEncontrada = b.mo
 
-            linhaMOSGerarPDF.append([mosGerarPDF[0][0], mosGerarPDF, btnGerarPDF])
 
-            seriesdessaMO = [0, 0, 0]
-            seriesEncontradasdessaMO = []
-            mosGerarPDF = []
-            btnGerarPDF = "true"
-
-
-        if (not b.numeroInspecaoRealizada is None):
-            mosGerarPDF.append([b.mo, b.serie, b.numeroInspecaoRealizada, round((b.numeroInspecaoRealizada/CONST_NUMTOTALINSPECOES)*100)])
-            if (b.numeroInspecaoRealizada < CONST_NUMTOTALINSPECOES):
+        for i in range (0, 3):
+            if (not seriesdessaMO[i] in seriesEncontradasdessaMO):
+                mosGerarPDF.append([ultimaMOEncontrada, seriesdessaMO[i], 0, 0])
                 btnGerarPDF = "false"
-            seriesdessaMO = [b.seriei, b.serieii, b.serieiii]
-            seriesEncontradasdessaMO.append(b.serie)
-            ultimaMOEncontrada = b.mo
-        else:
-            seriesdessaMO = [b.seriei, b.serieii, b.serieiii]
-            seriesEncontradasdessaMO.append(b.serie)
-            ultimaMOEncontrada = b.mo
 
-
-    for i in range (0, 3):
-        if (not seriesdessaMO[i] in seriesEncontradasdessaMO):
-            mosGerarPDF.append([ultimaMOEncontrada, seriesdessaMO[i], 0, 0])
-            btnGerarPDF = "false"
-
-    linhaMOSGerarPDF.append([mosGerarPDF[0][0], mosGerarPDF, btnGerarPDF])
+        linhaMOSGerarPDF.append([mosGerarPDF[0][0], mosGerarPDF, btnGerarPDF])
 
     contexto = {
         'linhaMOSGerarPDF': linhaMOSGerarPDF,
