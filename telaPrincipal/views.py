@@ -65,7 +65,7 @@ def carregarItemInspecao(request):
         ORDER BY
         	telaPrincipal_iteminspecaopc.numero DESC;'''
     buscaItemInspecao = models.inspecaoPlanoControle.objects.raw(b)
-    for b in buscaItemInspecao
+    for b in buscaItemInspecao:
         print (b.id)
         print (b.mo)
     if (len(buscaItemInspecao) < CONST_NUMTOTALINSPECOES):
