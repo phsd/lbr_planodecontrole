@@ -45,7 +45,7 @@ class itemInspecaoPC (models.Model):
         blank=False
     )
     requisito = models.CharField(
-        max_length=50,
+        max_length=255,
         null=False,
         blank=False
     )
