@@ -67,7 +67,7 @@ def carregarItemInspecao(request):
     buscaItemInspecao = models.inspecaoPlanoControle.objects.raw(b)
     for b in buscaItemInspecao:
         print (b.id)
-        print (b.mo)
+        print (b.numero)
     if (len(buscaItemInspecao) < CONST_NUMTOTALINSPECOES):
         if (len(buscaItemInspecao) == 0):
             numeroProximaInspecao = 1
