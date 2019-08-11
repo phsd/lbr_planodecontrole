@@ -64,8 +64,10 @@ def carregarItemInspecao(request):
         	telaPrincipal_headerplanocontrole.mo = \'''' + MOBuscar + '''\'
         ORDER BY
         	telaPrincipal_iteminspecaopc.numero DESC;'''
-    print(b)
     buscaItemInspecao = models.inspecaoPlanoControle.objects.raw(b)
+    for b in buscaItemInspecao
+        print (b.id)
+        print (b.mo)
     if (len(buscaItemInspecao) < CONST_NUMTOTALINSPECOES):
         if (len(buscaItemInspecao) == 0):
             numeroProximaInspecao = 1
