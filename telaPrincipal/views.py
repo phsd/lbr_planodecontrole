@@ -248,7 +248,7 @@ def PDF_IPXX_XXX_19(request, mo):
         'listInspecoesPCSerieIII': listInspecoesPCSerieIII
     })
     font_config = FontConfiguration()
-    pdf_criado = HTML(string=html, base_url=request.build_absolute_uri()).write_pdf()
+    pdf_criado = HTML(string=html).write_pdf()
     dirname = os.path.dirname(__file__)
     if os.path.exists(dirname):
         with open(os.path.join(dirname, '../media/pdfs/'+ mo +'.pdf'), 'wb') as f:
