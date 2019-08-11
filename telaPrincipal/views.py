@@ -248,8 +248,7 @@ def PDF_IPXX_XXX_19(request, mo):
         'listInspecoesPCSerieIII': listInspecoesPCSerieIII
     })
     font_config = FontConfiguration()
-    bu = "https://lbrplcrtl.pythonanywhere.com/pdf/PDF_IPXX_XXX_19/" + mo + "/"
-    pdf_criado = HTML(string=html, base_url=bu).write_pdf()
+    pdf_criado = HTML(string=html).write_pdf()
     dirname = os.path.dirname(__file__)
     if os.path.exists(dirname):
         with open(os.path.join(dirname, '../media/pdfs/'+ mo +'.pdf'), 'wb') as f:
