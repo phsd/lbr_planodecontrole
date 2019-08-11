@@ -814,7 +814,7 @@
 				{{i.1}}
 			</div>
 			<div class="divRequisitoValores bordal bordab" style="top: {{ topPosicaoInspecao|add:8 }}mm;">
-				{{i.3}}
+				{% autoescape off %}{{i.3}}{% endautoescape %}
 			</div>
 			<div class="divMetodoInstrucaoValores bordal bordab" style="top: {{ topPosicaoInspecao|add:8 }}mm;">
 				{{i.5}}
